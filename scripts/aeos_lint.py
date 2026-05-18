@@ -29,6 +29,7 @@ GOVERNANCE_FILES = [
     "REVIEW_REQUIREMENTS.md",
     "ESCALATION_POLICY.md",
     "SAFETY_RULES.md",
+    "GOVERNANCE_SEVERITY_MODEL.md",
 ]
 
 PROTOCOL_FILES = [
@@ -49,6 +50,9 @@ TEMPLATE_FILES = [
     "audit_template.md",
     "handoff_template.md",
     "incident_template.md",
+    "operational_report_template.md",
+    "escalation_template.md",
+    "governance_health_report_template.md",
 ]
 
 WORKFLOW_FILES = [
@@ -73,6 +77,8 @@ MEMORY_DIRS = [
 ]
 
 # ── Traceability prefix patterns ─────────────────────────────────────
+
+VALID_SEVERITY_LABELS = {"LOW", "MEDIUM", "HIGH", "CRITICAL"}
 
 TRACEABILITY_PREFIXES = {
     "OBJ": r"OBJ-\d{3,}",
@@ -265,6 +271,52 @@ def check_workflow_closure():
     return all_ok
 
 
+def check_v03_documents():
+    print("\n[6] v0.3 Operational Documents")
+    all_ok = True
+
+    v03_docs = [
+        ("governance/GOVERNANCE_SEVERITY_MODEL.md", os.path.join(ROOT_DIR, "governance", "GOVERNANCE_SEVERITY_MODEL.md")),
+        ("docs/REVIEW_CADENCE.md", os.path.join(ROOT_DIR, "docs", "REVIEW_CADENCE.md")),
+        ("docs/OPERATIONAL_EXAMPLES.md", os.path.join(ROOT_DIR, "docs", "OPERATIONAL_EXAMPLES.md")),
+    ]
+    for label, filepath in v03_docs:
+        if not check_file(filepath, label):
+            all_ok = False
+
+    v03_templates = [
+        ("templates/escalation_template.md", os.path.join(ROOT_DIR, "templates", "escalation_template.md")),
+        ("templates/governance_health_report_template.md", os.path.join(ROOT_DIR, "templates", "governance_health_report_template.md")),
+    ]
+    for label, filepath in v03_templates:
+        if not check_file(filepath, label):
+            all_ok = False
+
+    return all_ok
+
+
+def check_severity_labels():
+    print("\n[7] Severity Label Validation")
+    all_ok = True
+
+    severity_file = os.path.join(ROOT_DIR, "governance", "GOVERNANCE_SEVERITY_MODEL.md")
+    if not os.path.isfile(severity_file):
+        print(f"  FAIL: GOVERNANCE_SEVERITY_MODEL.md not found")
+        return False
+
+    with open(severity_file, "r") as f:
+        content = f.read()
+
+    for label in VALID_SEVERITY_LABELS:
+        if f"### {label}" in content:
+            print(f"  OK:   Severity level {label} defined")
+        else:
+            print(f"  FAIL: Severity level {label} not defined")
+            all_ok = False
+
+    return all_ok
+
+
 # ── Main ─────────────────────────────────────────────────────────────
 
 def main():
@@ -278,6 +330,8 @@ def main():
     results.append(("Agent Registry", check_agent_registry()))
     results.append(("Traceability References", check_traceability_references()))
     results.append(("Workflow Closure", check_workflow_closure()))
+    results.append(("v0.3 Documents", check_v03_documents()))
+    results.append(("Severity Labels", check_severity_labels()))
 
     print("\n" + "=" * 60)
     print("Summary")

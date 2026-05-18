@@ -1,4 +1,4 @@
-# AEOS Core v0.2
+# AEOS Core v0.3
 
 AI Engineering Operating System. Governance-first, repo-driven, markdown-first, human-governed, deterministic, auditable, reproducible.
 
@@ -58,23 +58,24 @@ aeos-core/
   docs/             Operational documentation
 ```
 
-## v0.2 Additions
+## v0.3 Additions
 
-AEOS Core v0.2 introduces operational continuity features:
+AEOS Core v0.3 introduces operational execution readiness:
 
-- **Traceability Index** (`memory/index/`) — defines how AEOS artifacts are connected through explicit traceability IDs.
-- **Workflow Closure Validation** (`scripts/aeos_lint.py`) — validates that closed tasks reference objectives and handoffs, and all traceability references are valid.
-- **Operational Reporting** (`templates/operational_report_template.md`) — reusable template for periodic operational reports.
-- **Governance Continuity** (`docs/GOVERNANCE_CONTINUITY.md`) — documents why governance continuity, explicit memory, and repo-driven traceability matter.
+- **Governance Severity Model** (`governance/GOVERNANCE_SEVERITY_MODEL.md`) — classifies governance violations as LOW, MEDIUM, HIGH, or CRITICAL with defined response requirements.
+- **Escalation Classification** (`templates/escalation_template.md`) — standardized escalation template with severity, impact, and resolution tracking.
+- **Operational Review Cadence** (`docs/REVIEW_CADENCE.md`) — defines daily, weekly, monthly, and quarterly review cycles.
+- **Governance Health Reporting** (`templates/governance_health_report_template.md`) — reusable template for governance health assessment.
+- **Operational Lifecycle Examples** (`docs/OPERATIONAL_EXAMPLES.md`) — complete realistic examples of all AEOS artifact lifecycles with traceability.
 
-AEOS Core v0.2 still does NOT include:
+AEOS Core v0.3 still does NOT include:
 
-- Autonomous orchestration.
+- Orchestration runtime.
+- Autonomous workflows.
 - Runtime agents.
 - Hidden memory.
+- Distributed execution.
 - Workflow execution engines.
-- Databases or vector stores.
-- External dependencies beyond pytest and pyyaml.
 
 ## Quick Start
 
@@ -130,7 +131,7 @@ Each stage produces explicit artifacts. No stage may be skipped.
 
 ## Explicit Non-Goals
 
-AEOS Core v0.2 is NOT:
+AEOS Core v0.3 is NOT:
 
 - An autonomous execution system.
 - A hidden memory system.
@@ -144,7 +145,7 @@ AEOS Core v0.2 is NOT:
 - A distributed runtime.
 - A runtime agent system.
 
-AEOS Core v0.2 does NOT execute autonomous workflows.
+AEOS Core v0.3 does NOT execute autonomous workflows.
 
 ## Documentation
 
@@ -152,6 +153,8 @@ AEOS Core v0.2 does NOT execute autonomous workflows.
 - [Operating Model](docs/OPERATING_MODEL.md)
 - [MVP Scope](docs/MVP_SCOPE.md)
 - [Governance Continuity](docs/GOVERNANCE_CONTINUITY.md)
+- [Review Cadence](docs/REVIEW_CADENCE.md)
+- [Operational Examples](docs/OPERATIONAL_EXAMPLES.md)
 
 ## Current Phase
 

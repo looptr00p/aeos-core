@@ -13,6 +13,8 @@ REQUIRED_TEMPLATE_FILES = [
     "handoff_template.md",
     "incident_template.md",
     "operational_report_template.md",
+    "escalation_template.md",
+    "governance_health_report_template.md",
 ]
 
 
