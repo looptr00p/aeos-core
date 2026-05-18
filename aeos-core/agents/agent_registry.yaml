@@ -1,0 +1,38 @@
+# Agent Registry
+# All agents operating within AEOS Core MUST be registered here.
+
+agents:
+  - agent_id: director-agent
+    name: Director Agent
+    role: governance-direction
+    status: active
+
+  - agent_id: architect-agent
+    name: Architect Agent
+    role: architecture-proposal
+    status: active
+
+  - agent_id: implementer-agent
+    name: Implementer Agent
+    role: scoped-implementation
+    status: active
+
+  - agent_id: reviewer-agent
+    name: Reviewer Agent
+    role: validation-review
+    status: active
+
+  - agent_id: auditor-agent
+    name: Auditor Agent
+    role: governance-audit
+    status: active
+
+  - agent_id: qa-agent
+    name: QA Agent
+    role: test-validation
+    status: active
+
+  - agent_id: documentation-agent
+    name: Documentation Agent
+    role: documentation-updates
+    status: active
