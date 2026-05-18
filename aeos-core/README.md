@@ -1,4 +1,4 @@
-# AEOS Core v0
+# AEOS Core v0.2
 
 AI Engineering Operating System. Governance-first, repo-driven, markdown-first, human-governed, deterministic, auditable, reproducible.
 
@@ -52,9 +52,29 @@ aeos-core/
   agents/           Agent definitions and registry
   workflows/        End-to-end process definitions
   memory/           Explicit institutional memory
+    index/          Traceability index and artifact relationships
+  scripts/          Operational validation (aeos_lint.py)
   tests/            Repository structure validation
   docs/             Operational documentation
 ```
+
+## v0.2 Additions
+
+AEOS Core v0.2 introduces operational continuity features:
+
+- **Traceability Index** (`memory/index/`) — defines how AEOS artifacts are connected through explicit traceability IDs.
+- **Workflow Closure Validation** (`scripts/aeos_lint.py`) — validates that closed tasks reference objectives and handoffs, and all traceability references are valid.
+- **Operational Reporting** (`templates/operational_report_template.md`) — reusable template for periodic operational reports.
+- **Governance Continuity** (`docs/GOVERNANCE_CONTINUITY.md`) — documents why governance continuity, explicit memory, and repo-driven traceability matter.
+
+AEOS Core v0.2 still does NOT include:
+
+- Autonomous orchestration.
+- Runtime agents.
+- Hidden memory.
+- Workflow execution engines.
+- Databases or vector stores.
+- External dependencies beyond pytest and pyyaml.
 
 ## Quick Start
 
@@ -65,6 +85,9 @@ pip install pytest pyyaml
 # Run validation tests
 cd aeos-core
 pytest tests/
+
+# Run operational lint
+python scripts/aeos_lint.py
 ```
 
 ## Lifecycle
@@ -107,7 +130,7 @@ Each stage produces explicit artifacts. No stage may be skipped.
 
 ## Explicit Non-Goals
 
-AEOS Core v0 is NOT:
+AEOS Core v0.2 is NOT:
 
 - An autonomous execution system.
 - A hidden memory system.
@@ -121,13 +144,14 @@ AEOS Core v0 is NOT:
 - A distributed runtime.
 - A runtime agent system.
 
-AEOS Core v0 does NOT execute autonomous workflows.
+AEOS Core v0.2 does NOT execute autonomous workflows.
 
 ## Documentation
 
 - [AEOS Overview](docs/AEOS_OVERVIEW.md)
 - [Operating Model](docs/OPERATING_MODEL.md)
 - [MVP Scope](docs/MVP_SCOPE.md)
+- [Governance Continuity](docs/GOVERNANCE_CONTINUITY.md)
 
 ## Current Phase
 

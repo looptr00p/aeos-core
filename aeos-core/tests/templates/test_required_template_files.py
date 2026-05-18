@@ -12,6 +12,7 @@ REQUIRED_TEMPLATE_FILES = [
     "audit_template.md",
     "handoff_template.md",
     "incident_template.md",
+    "operational_report_template.md",
 ]
 
 
