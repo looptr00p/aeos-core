@@ -1,7 +1,7 @@
 import os
 import pytest
 
-BASE_DIR = os.path.join(os.path.dirname(__file__), "..", "..")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 
 REQUIRED_TEMPLATE_FILES = [

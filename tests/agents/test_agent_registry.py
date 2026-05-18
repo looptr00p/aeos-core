@@ -2,7 +2,7 @@ import os
 import yaml
 import pytest
 
-BASE_DIR = os.path.join(os.path.dirname(__file__), "..", "..")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 AGENTS_DIR = os.path.join(BASE_DIR, "agents")
 REGISTRY_PATH = os.path.join(AGENTS_DIR, "agent_registry.yaml")
 

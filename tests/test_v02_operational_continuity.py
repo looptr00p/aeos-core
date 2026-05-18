@@ -3,7 +3,7 @@ import subprocess
 import sys
 import pytest
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEMORY_INDEX_DIR = os.path.join(BASE_DIR, "memory", "index")
 TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 SCRIPTS_DIR = os.path.join(BASE_DIR, "scripts")
