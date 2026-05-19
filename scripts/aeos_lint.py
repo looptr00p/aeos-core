@@ -383,6 +383,90 @@ def check_traceability_integrity():
     return all_ok
 
 
+def check_unresolved_lifecycle_continuity():
+    print("\n[9] Unresolved Lifecycle Continuity")
+    all_ok = True
+
+    tasks = collect_memory_artifacts("tasks")
+    incidents = collect_memory_artifacts("incidents")
+
+    objectives = set()
+    for fname, content in collect_memory_artifacts("objectives"):
+        objectives.update(re.findall(TRACEABILITY_PREFIXES["OBJ"], content))
+
+    active_incidents = []
+    open_escalations = []
+    in_progress_tasks = []
+
+    for fname, content in incidents:
+        status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
+        severity_match = re.search(r"## Severity\s*\n\s*(\w+)", content)
+        status = status_match.group(1) if status_match else ""
+        severity = severity_match.group(1) if severity_match else ""
+        is_escalation = fname.startswith("ESC-")
+
+        if is_escalation and status == "OPEN":
+            open_escalations.append((fname, content, severity))
+        elif not is_escalation and status == "ACTIVE":
+            active_incidents.append((fname, content, severity))
+
+    for fname, content in tasks:
+        status_match = re.search(r"## Status\s*\n\s*(\w+(?:_\w+)?)", content)
+        status = status_match.group(1) if status_match else ""
+        if status == "IN_PROGRESS":
+            in_progress_tasks.append((fname, content))
+
+    print(f"  INFO: {len(in_progress_tasks)} IN_PROGRESS tasks")
+    print(f"  INFO: {len(active_incidents)} ACTIVE incidents")
+    print(f"  INFO: {len(open_escalations)} OPEN escalations")
+
+    for fname, content, severity in active_incidents:
+        refs = find_traceability_refs(content)
+        if not refs["TASK"] and not refs["OBJ"]:
+            print(f"  FAIL: ACTIVE incident {fname} has no task or objective references")
+            all_ok = False
+        else:
+            obj_refs = refs["OBJ"]
+            valid_obj = bool(obj_refs & objectives) if obj_refs else True
+            if not valid_obj:
+                print(f"  FAIL: ACTIVE incident {fname} references non-existent objective")
+                all_ok = False
+            else:
+                print(f"  OK:   ACTIVE incident {fname} ({severity}) has valid references")
+
+    for fname, content, severity in open_escalations:
+        refs = find_traceability_refs(content)
+        if not refs["TASK"] and not refs["OBJ"]:
+            print(f"  FAIL: OPEN escalation {fname} has no task or objective references")
+            all_ok = False
+        else:
+            obj_refs = refs["OBJ"]
+            valid_obj = bool(obj_refs & objectives) if obj_refs else True
+            if not valid_obj:
+                print(f"  FAIL: OPEN escalation {fname} references non-existent objective")
+                all_ok = False
+            else:
+                print(f"  OK:   OPEN escalation {fname} ({severity}) has valid references")
+
+    for fname, content in in_progress_tasks:
+        refs = find_traceability_refs(content)
+        if not refs["OBJ"]:
+            print(f"  FAIL: IN_PROGRESS task {fname} has no objective reference")
+            all_ok = False
+        else:
+            obj_ref = list(refs["OBJ"])[0]
+            if obj_ref not in objectives:
+                print(f"  FAIL: IN_PROGRESS task {fname} references non-existent {obj_ref}")
+                all_ok = False
+            else:
+                print(f"  OK:   IN_PROGRESS task {fname} references valid {obj_ref}")
+
+    if not active_incidents and not open_escalations and not in_progress_tasks:
+        print("  INFO: No unresolved lifecycle artifacts found")
+
+    return all_ok
+
+
 # ── Main ─────────────────────────────────────────────────────────────
 
 def main():
@@ -399,6 +483,7 @@ def main():
     results.append(("v0.3 Documents", check_v03_documents()))
     results.append(("Severity Labels", check_severity_labels()))
     results.append(("Traceability Integrity", check_traceability_integrity()))
+    results.append(("Unresolved Lifecycle Continuity", check_unresolved_lifecycle_continuity()))
 
     print("\n" + "=" * 60)
     print("Summary")

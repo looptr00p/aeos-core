@@ -1,12 +1,12 @@
 # Traceability Index
 
-**Index ID**: IDX-003
+**Index ID**: IDX-004
 **Date**: 2026-05-18
 **Created By**: implementer-agent
 
 ## Scope
 
-AEOS Operational Validation Cycles 001, 002, and Ergonomics Refinement v0.3.1.
+AEOS Operational Validation Cycles 001, 002, Ergonomics Refinement v0.3.1, and Real Engineering Operational Cycle 001.
 
 ## Artifact Map
 
@@ -17,6 +17,7 @@ AEOS Operational Validation Cycles 001, 002, and Ergonomics Refinement v0.3.1.
 | OBJ-001 | Validate AEOS Core v0.3 through real operational cycle | CLOSED | None | TASK-001 |
 | OBJ-002 | Validate AEOS against external operational engineering initiative | CLOSED | None | TASK-002, TASK-003 |
 | OBJ-003 | Prepare AEOS for real engineering project usage | ACTIVE | None | TBD |
+| OBJ-004 | Operate Quant System Governance & Operational Hardening Initiative | ACTIVE | None | TASK-004, TASK-005, TASK-006 |
 
 ### Architecture Decisions
 
@@ -29,6 +30,9 @@ None created during these cycles.
 | TASK-001 | Run AEOS Operational Validation Cycle 001 | CLOSED | OBJ-001 | HND-001 | REV-001 | AUD-001 |
 | TASK-002 | Workflow hardening review | CLOSED | OBJ-002 | HND-002 | REV-002 | AUD-002 |
 | TASK-003 | Operational auditability validation | CLOSED | OBJ-002 | HND-003 | REV-003 | AUD-003 |
+| TASK-004 | Governance workflow hardening review | IN_PROGRESS | OBJ-004 | HND-004 | REV-004 | TBD |
+| TASK-005 | Operational traceability consistency review | IN_PROGRESS | OBJ-004 | HND-004 | REV-005 | TBD |
+| TASK-006 | Cross-project continuity coordination review | IN_PROGRESS | OBJ-004 | HND-004 | REV-004, REV-005 | TBD |
 
 ### Reviews
 
@@ -37,6 +41,8 @@ None created during these cycles.
 | REV-001 | TASK-001 | APPROVE WITH CONDITIONS | reviewer-agent | 2026-05-18 |
 | REV-002 | TASK-002 | APPROVE WITH OBSERVATIONS | auditor-agent | 2026-05-18 |
 | REV-003 | TASK-003 | APPROVE WITH OBSERVATIONS | reviewer-agent | 2026-05-18 |
+| REV-004 | TASK-004, TASK-006 | APPROVE WITH OBSERVATIONS | reviewer-agent | 2026-05-18 |
+| REV-005 | TASK-005, TASK-006 | APPROVE WITH OBSERVATIONS | auditor-agent | 2026-05-18 |
 
 ### Audits
 
@@ -53,12 +59,15 @@ None created during these cycles.
 | HND-001 | TASK-001 | implementer-agent | 2026-05-18 | External project cycle |
 | HND-002 | TASK-002 | reviewer-agent | 2026-05-18 | TASK-003 auditability validation |
 | HND-003 | TASK-003 | auditor-agent | 2026-05-18 | Operational reports and learnings |
+| HND-004 | TASK-004, TASK-005, TASK-006 | director-agent | 2026-05-18 | Next operational cycle owner |
 
 ### Incidents / Escalations
 
 | ID | Severity | Category | Status | Related Task |
 |----|----------|----------|--------|-------------|
 | ESC-001 | MEDIUM | Governance overhead | RESOLVED | TASK-002 |
+| INC-001 | MEDIUM | Traceability drift risk | ACTIVE | TASK-004, TASK-005, TASK-006 |
+| ESC-002 | MEDIUM | Review overhead latency | OPEN | TASK-004, TASK-005, TASK-006 |
 
 ### Operational Reports
 
@@ -66,6 +75,7 @@ None created during these cycles.
 |----|--------|-------------|------|
 | OPR-001 | 2026-05-18 | implementer-agent | 2026-05-18 |
 | OPR-002 | 2026-05-18 | implementer-agent | 2026-05-18 |
+| OPR-003 | 2026-05-18 | implementer-agent | 2026-05-18 |
 
 ### Governance Health Reports
 
@@ -73,6 +83,7 @@ None created during these cycles.
 |----|--------|-------------|---------------|
 | GHR-001 | 2026-05-18 | auditor-agent | HEALTHY |
 | GHR-002 | 2026-05-18 | auditor-agent | HEALTHY |
+| GHR-003 | 2026-05-18 | implementer-agent | HEALTHY WITH OBSERVATIONS |
 
 ### Ergonomics Documents (v0.3.1)
 
@@ -107,6 +118,26 @@ OBJ-002 (Objective — CLOSED)
 OBJ-003 (Objective — ACTIVE)
   └── Tasks: TBD (future real project operational cycles)
 
+OBJ-004 (Objective — ACTIVE)
+  ├── TASK-004 (Task — IN_PROGRESS)
+  │     ├── REV-004 (Review — APPROVE WITH OBSERVATIONS)
+  │     ├── INC-001 (Incident — ACTIVE)
+  │     ├── ESC-002 (Escalation — OPEN)
+  │     └── HND-004 (Handoff — COMPLETE, partial)
+  │
+  ├── TASK-005 (Task — IN_PROGRESS)
+  │     ├── REV-005 (Review — APPROVE WITH OBSERVATIONS)
+  │     ├── INC-001 (Incident — ACTIVE)
+  │     ├── ESC-002 (Escalation — OPEN)
+  │     └── HND-004 (Handoff — COMPLETE, partial)
+  │
+  └── TASK-006 (Task — IN_PROGRESS)
+        ├── REV-004 (Review — APPROVE WITH OBSERVATIONS)
+        ├── REV-005 (Review — APPROVE WITH OBSERVATIONS)
+        ├── INC-001 (Incident — ACTIVE)
+        ├── ESC-002 (Escalation — OPEN)
+        └── HND-004 (Handoff — COMPLETE, partial)
+
 OPR-001 (Operational Report — Cycle 001)
   └── References: OBJ-001, TASK-001, REV-001, AUD-001, HND-001
 
@@ -119,6 +150,12 @@ GHR-001 (Governance Health Report — Cycle 001)
 GHR-002 (Governance Health Report — Cycle 002)
   └── References: OBJ-002, TASK-002, TASK-003, REV-002, REV-003, AUD-002, AUD-003, ESC-001
 
+OPR-003 (Operational Report — Cycle 001 Real Operations)
+  └── References: OBJ-004, TASK-004, TASK-005, TASK-006, REV-004, REV-005, INC-001, ESC-002, HND-004
+
+GHR-003 (Governance Health Report — Cycle 001 Real Operations)
+  └── References: OBJ-004, TASK-004, TASK-005, TASK-006, REV-004, REV-005, INC-001, ESC-002, HND-004
+
 Ergonomics v0.3.1:
   └── WORKFLOW_TIERING_GUIDANCE.md — reduces workflow overhead
   └── REVIEW_MINIMIZATION_GUIDANCE.md — reduces review proliferation
@@ -128,7 +165,9 @@ Ergonomics v0.3.1:
 
 ## Traceability Gaps
 
-None.
+- TASK-004, TASK-005, TASK-006 are IN_PROGRESS — audits pending task closure.
+- INC-001 is ACTIVE — traceability drift risk under active coordination.
+- ESC-002 is OPEN — review overhead escalation unresolved intentionally.
 
 ## Validation Results
 
@@ -138,16 +177,20 @@ None.
 - [x] All handoff references use valid prefixes
 - [x] All incident references use valid prefixes
 - [x] No orphaned artifacts detected
+- [ ] TASK-004, TASK-005, TASK-006 are IN_PROGRESS — audits pending
+- [ ] INC-001 is ACTIVE — traceability drift risk monitored
+- [ ] ESC-002 is OPEN — review overhead escalation unresolved
 
 ## Artifact Count
 
-| Cycle | Objectives | Tasks | Reviews | Audits | Handoffs | Escalations | Reports | Ergonomics | Total |
-|-------|-----------|-------|---------|--------|----------|-------------|---------|------------|-------|
-| 001 | 1 | 1 | 1 | 1 | 1 | 0 | 2 | 0 | 7 |
-| 002 | 1 | 2 | 2 | 2 | 2 | 1 | 2 | 0 | 12 |
-| 003 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 5 |
-| **Total** | **3** | **3** | **3** | **3** | **3** | **1** | **4** | **4** | **24** |
+| Cycle | Objectives | Tasks | Reviews | Audits | Handoffs | Incidents | Escalations | Reports | Ergonomics | Total |
+|-------|-----------|-------|---------|--------|----------|-----------|-------------|---------|------------|-------|
+| 001 | 1 | 1 | 1 | 1 | 1 | 0 | 0 | 2 | 0 | 7 |
+| 002 | 1 | 2 | 2 | 2 | 2 | 0 | 1 | 2 | 0 | 12 |
+| 003 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 5 |
+| 004 | 1 | 3 | 2 | 0 | 1 | 1 | 1 | 2 | 0 | 11 |
+| **Total** | **4** | **6** | **5** | **3** | **4** | **1** | **2** | **6** | **4** | **35** |
 
 ## Notes
 
-Index updated to include OBJ-003 and v0.3.1 ergonomics artifacts. Total artifact count: 24. No gaps or inconsistencies detected. OBJ-003 is ACTIVE — awaiting real project operational cycles.
+Index updated to include OBJ-004 and Operational Cycle 001 artifacts. Total artifact count: 35. Active lifecycle artifacts intentionally preserved: TASK-004/005/006 (IN_PROGRESS), INC-001 (ACTIVE), ESC-002 (OPEN). OBJ-003 remains ACTIVE — awaiting real project operational cycles. OBJ-004 is ACTIVE — real engineering operational cycle in progress.
