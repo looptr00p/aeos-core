@@ -77,25 +77,6 @@ AEOS Core v0.3 still does NOT include:
 - Distributed execution.
 - Workflow execution engines.
 
-## v0.3 Additions
-
-AEOS Core v0.3 introduces operational execution readiness artifacts:
-
-- **Governance Severity Model** (`aeos-core/governance/GOVERNANCE_SEVERITY_MODEL.md`) for LOW/MEDIUM/HIGH/CRITICAL classification.
-- **Escalation Classification Template** (`aeos-core/templates/escalation_template.md`) with explicit escalation fields and approval expectations.
-- **Operational Review Cadence** (`aeos-core/docs/REVIEW_CADENCE.md`) covering daily/weekly/monthly/quarterly review loops.
-- **Governance Health Reporting Template** (`aeos-core/templates/governance_health_report_template.md`) for lightweight governance health tracking.
-- **Operational Lifecycle Examples** (`aeos-core/docs/OPERATIONAL_EXAMPLES.md`) with traceability-linked lifecycle walkthroughs.
-- **v0.3 lint checks** in `aeos-core/scripts/aeos_lint.py` for required v0.3 artifacts.
-
-AEOS Core v0.3 still does NOT include:
-
-- orchestration runtime
-- autonomous workflows
-- runtime agents
-- hidden memory
-- distributed execution
-
 ## Quick Start
 
 ```bash
@@ -180,3 +161,13 @@ AEOS Core v0.3 does NOT execute autonomous workflows.
 **Phase 0: Governance/Bootstrap**
 
 See [PHASE_POLICY.md](governance/PHASE_POLICY.md) for phase definitions.
+
+## Repository Role
+
+This repository is the **AEOS Experimental Governance Lab**.
+
+- `aeos-core-opencode` is the canonical operational base.
+- This repository is used for governance, enforcement, lifecycle, traceability, and validation experiments.
+- Experiments are not canonical by default.
+- All porting to `aeos-core-opencode` requires explicit review, validation evidence, and human approval.
+- No autonomous runtime exists in this repository.
