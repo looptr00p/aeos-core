@@ -383,6 +383,62 @@ def check_traceability_integrity():
     return all_ok
 
 
+def check_concurrent_objective_operations():
+    print("\n[10] Concurrent Objective Operations")
+    all_ok = True
+
+    objectives = collect_memory_artifacts("objectives")
+    incidents = collect_memory_artifacts("incidents")
+
+    active_objectives = []
+    for fname, content in objectives:
+        status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
+        status = status_match.group(1) if status_match else ""
+        if status == "ACTIVE":
+            active_objectives.append((fname, content))
+
+    open_escalations = []
+    for fname, content in incidents:
+        if fname.startswith("ESC-"):
+            status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
+            status = status_match.group(1) if status_match else ""
+            if status == "OPEN":
+                open_escalations.append((fname, content))
+
+    print(f"  INFO: {len(active_objectives)} ACTIVE objectives")
+    print(f"  INFO: {len(open_escalations)} OPEN escalations")
+
+    if len(active_objectives) >= 2:
+        obj_ids = [re.findall(TRACEABILITY_PREFIXES["OBJ"], c) for _, c in active_objectives]
+        obj_ids = [ids[0] for ids in obj_ids if ids]
+        print(f"  WARN: Concurrent ACTIVE objectives detected: {', '.join(obj_ids)}")
+        print(f"  INFO: Reviewer contention risk elevated under concurrent objectives")
+        print(f"  INFO: Escalation accumulation rate may double under concurrency")
+
+    if len(open_escalations) >= 2:
+        esc_ids = [f for f, _ in open_escalations]
+        print(f"  WARN: Multiple OPEN escalations detected: {', '.join(esc_ids)}")
+        print(f"  INFO: Escalation accumulation risk — monitor resolution cadence")
+
+    active_incidents = []
+    for fname, content in incidents:
+        if not fname.startswith("ESC-"):
+            status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
+            status = status_match.group(1) if status_match else ""
+            if status == "ACTIVE":
+                active_incidents.append((fname, content))
+
+    if len(active_incidents) >= 2:
+        inc_ids = [f for f, _ in active_incidents]
+        print(f"  WARN: Multiple ACTIVE incidents detected: {', '.join(inc_ids)}")
+        print(f"  INFO: Incident resolution capacity split across concurrent incidents")
+
+    if not active_objectives and not open_escalations and not active_incidents:
+        print("  INFO: No concurrent operational pressure detected")
+
+    return all_ok
+
+
 def check_unresolved_lifecycle_continuity():
     print("\n[9] Unresolved Lifecycle Continuity")
     all_ok = True
@@ -484,6 +540,7 @@ def main():
     results.append(("Severity Labels", check_severity_labels()))
     results.append(("Traceability Integrity", check_traceability_integrity()))
     results.append(("Unresolved Lifecycle Continuity", check_unresolved_lifecycle_continuity()))
+    results.append(("Concurrent Objective Operations", check_concurrent_objective_operations()))
 
     print("\n" + "=" * 60)
     print("Summary")
