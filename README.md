@@ -62,11 +62,12 @@ aeos-core/
 
 AEOS Core v0.3 introduces operational execution readiness:
 
-- **Governance Severity Model** (`governance/GOVERNANCE_SEVERITY_MODEL.md`) — classifies governance violations as LOW, MEDIUM, HIGH, or CRITICAL with defined response requirements.
-- **Escalation Classification** (`templates/escalation_template.md`) — standardized escalation template with severity, impact, and resolution tracking.
-- **Operational Review Cadence** (`docs/REVIEW_CADENCE.md`) — defines daily, weekly, monthly, and quarterly review cycles.
-- **Governance Health Reporting** (`templates/governance_health_report_template.md`) — reusable template for governance health assessment.
-- **Operational Lifecycle Examples** (`docs/OPERATIONAL_EXAMPLES.md`) — complete realistic examples of all AEOS artifact lifecycles with traceability.
+- **Governance Severity Model** (`governance/GOVERNANCE_SEVERITY_MODEL.md`) — [IMPLEMENTED] classifies governance violations as LOW, MEDIUM, HIGH, or CRITICAL with defined response requirements.
+- **Escalation Classification** (`templates/escalation_template.md`) — [IMPLEMENTED] standardized escalation template with severity, impact, and resolution tracking.
+- **Operational Review Cadence** (`docs/REVIEW_CADENCE.md`) — [IMPLEMENTED] defines daily, weekly, monthly, and quarterly review cycles.
+- **Governance Health Reporting** (`templates/governance_health_report_template.md`) — [IMPLEMENTED] reusable template for governance health assessment.
+- **Operational Lifecycle Examples** (`docs/OPERATIONAL_EXAMPLES.md`) — [IMPLEMENTED] complete realistic examples of all AEOS artifact lifecycles with traceability.
+- **State Classification Policy** (`governance/STATE_CLASSIFICATION_POLICY.md`) — [IMPLEMENTED] defines operational states (IMPLEMENTED, EXPERIMENTAL, PROPOSED, STRATEGIC) to prevent capability inflation and state ambiguity.
 
 AEOS Core v0.3 still does NOT include:
 
@@ -171,3 +172,14 @@ This repository is the **AEOS Experimental Governance Lab**.
 - Experiments are not canonical by default.
 - All porting to `aeos-core-opencode` requires explicit review, validation evidence, and human approval.
 - No autonomous runtime exists in this repository.
+
+## Operational State Classification
+
+All AEOS capabilities are classified using explicit operational states:
+
+- **IMPLEMENTED** — exists in repository, validated, operational.
+- **EXPERIMENTAL** — defined and tested, not yet stable.
+- **PROPOSED** — documented direction, not yet implemented.
+- **STRATEGIC** — long-term vision, no active work.
+
+Use explicit operational state classification where implementation maturity may be ambiguous. See `governance/STATE_CLASSIFICATION_POLICY.md`.
