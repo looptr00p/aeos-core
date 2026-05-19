@@ -3,6 +3,7 @@
 **Date**: 2026-05-19
 **Reference**: OBJ-008, ADR-003, GOVERNANCE_METRICS_FRAMEWORK.md
 **Version**: 1.0
+**Operational State**: EXPERIMENTAL
 
 ---
 
