@@ -23,6 +23,8 @@ REQUIRED_EXPERIMENTAL_FILES = [
     "governance/PORTING_POLICY.md",
     "templates/experiment_template.md",
     "templates/porting_review_template.md",
+    "docs/EXPERIMENTAL_LAB_OPERATING_NOTES.md",
+    "memory/experiments/PORTABILITY_RISK_ASSESSMENT_001.md",
 ]
 
 
