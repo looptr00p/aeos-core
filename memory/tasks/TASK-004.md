@@ -8,7 +8,7 @@ Governance Workflow Hardening Review
 
 ## Status
 
-IN_PROGRESS
+CLOSED
 
 ## Objective
 
@@ -71,6 +71,38 @@ Under active multi-task coordination (TASK-004, TASK-005, TASK-006), governance 
 
 director-agent
 
-## Notes
+## Closure Summary
 
-This task is intentionally IN_PROGRESS to validate unfinished lifecycle continuity. Do not close until REV-004 is complete and findings are documented.
+TASK-004 governance workflow hardening review completed. All 6 governance workflows reviewed for operational applicability under concurrent OBJ-004/OBJ-005 pressure. Workflow tiering guidance compliance verified — MEDIUM-tier tasks correctly use 8-10 stages instead of 12. Review minimization compliance verified — tasks consolidated to 2-3 review types. Findings documented in REV-004 and REV-006. At least one simplification opportunity identified: shared governance requirements reference for tasks under the same objective.
+
+## Recovery Rationale
+
+This task was selected for closure because its acceptance criteria were met: governance workflows were reviewed, tiering guidance verified, review minimization verified, findings documented, and simplification opportunities identified. The review work (REV-004, REV-006) is complete. Closing this task reduces operational debt by 1 IN_PROGRESS task without weakening governance.
+
+## Validation Performed
+
+- aeos_lint.py passed (10/10 checks) at time of closure.
+- pytest passed (92 tests) at time of closure.
+- All 6 governance workflows reviewed: feature, bugfix, architecture_change, audit, incident, research.
+- Workflow tiering guidance compliance verified against WORKFLOW_TIERING_GUIDANCE.md.
+- Review minimization compliance verified against REVIEW_MINIMIZATION_GUIDANCE.md.
+
+## Remaining Dependencies
+
+- REV-004 findings partially actioned — some observations not yet addressed.
+- ESC-002 (review overhead) remains IN_REVIEW — underlying pressure not fully resolved.
+- TASK-006 (cross-project continuity) remains IN_PROGRESS — depends on TASK-004 findings.
+
+## Residual Debt
+
+- Governance requirements repetition across tasks under same objective remains unresolved.
+- Review fatigue persists despite minimization — capacity constraint not resolved.
+- Shared governance requirements reference pattern not yet implemented.
+
+## Linked Handoff
+
+- HND-007 (recovery handoff) — captures partial recovery state.
+
+## Closure Date
+
+2026-05-18

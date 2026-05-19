@@ -523,6 +523,76 @@ def check_unresolved_lifecycle_continuity():
     return all_ok
 
 
+def check_recovery_continuity():
+    print("\n[11] Recovery Continuity")
+    all_ok = True
+
+    tasks = collect_memory_artifacts("tasks")
+    incidents = collect_memory_artifacts("incidents")
+    handoffs = collect_memory_artifacts("handoffs")
+
+    closed_tasks = []
+    resolved_incidents = []
+    in_review_escalations = []
+
+    for fname, content in tasks:
+        status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
+        status = status_match.group(1) if status_match else ""
+        if status == "CLOSED":
+            closed_tasks.append((fname, content))
+
+    for fname, content in incidents:
+        status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
+        status = status_match.group(1) if status_match else ""
+        if not fname.startswith("ESC-") and status == "RESOLVED":
+            resolved_incidents.append((fname, content))
+        elif fname.startswith("ESC-") and status == "IN_REVIEW":
+            in_review_escalations.append((fname, content))
+
+    recovery_handoff_exists = any("HND-007" in c for _, c in handoffs)
+
+    print(f"  INFO: {len(closed_tasks)} CLOSED tasks")
+    print(f"  INFO: {len(resolved_incidents)} RESOLVED incidents")
+    print(f"  INFO: {len(in_review_escalations)} IN_REVIEW escalations")
+    print(f"  INFO: Recovery handoff exists: {recovery_handoff_exists}")
+
+    for fname, content in closed_tasks:
+        has_closure = "## Closure Summary" in content
+        has_handoff = "HND-007" in content
+        if has_handoff and not has_closure:
+            print(f"  FAIL: CLOSED task {fname} references recovery handoff but missing closure summary")
+            all_ok = False
+        elif has_handoff:
+            print(f"  OK:   CLOSED task {fname} has closure summary and references recovery handoff")
+        elif has_closure:
+            print(f"  OK:   CLOSED task {fname} has closure summary (pre-recovery cycle)")
+        else:
+            print(f"  INFO: CLOSED task {fname} closed pre-recovery — no closure summary required")
+
+    for fname, content in resolved_incidents:
+        has_resolution = "## Resolution Summary" in content
+        if not has_resolution:
+            print(f"  FAIL: RESOLVED incident {fname} missing resolution summary")
+            all_ok = False
+        else:
+            print(f"  OK:   RESOLVED incident {fname} has resolution summary")
+
+    for fname, content in in_review_escalations:
+        has_progress = "## Recovery Progress" in content
+        if not has_progress:
+            print(f"  WARN: IN_REVIEW escalation {fname} missing recovery progress section")
+        else:
+            print(f"  OK:   IN_REVIEW escalation {fname} has recovery progress")
+
+    if not recovery_handoff_exists:
+        print(f"  WARN: No recovery handoff detected")
+
+    if not closed_tasks and not resolved_incidents and not in_review_escalations:
+        print("  INFO: No recovery artifacts found")
+
+    return all_ok
+
+
 # ── Main ─────────────────────────────────────────────────────────────
 
 def main():
@@ -541,6 +611,7 @@ def main():
     results.append(("Traceability Integrity", check_traceability_integrity()))
     results.append(("Unresolved Lifecycle Continuity", check_unresolved_lifecycle_continuity()))
     results.append(("Concurrent Objective Operations", check_concurrent_objective_operations()))
+    results.append(("Recovery Continuity", check_recovery_continuity()))
 
     print("\n" + "=" * 60)
     print("Summary")

@@ -1,12 +1,12 @@
 # Traceability Index
 
-**Index ID**: IDX-006
+**Index ID**: IDX-007
 **Date**: 2026-05-18
 **Created By**: implementer-agent
 
 ## Scope
 
-AEOS Operational Validation Cycles 001, 002, Ergonomics Refinement v0.3.1, Real Engineering Operational Cycle 001, Concurrent Objective Operations Cycle 001, and Governance Stabilization Cycle 001.
+AEOS Operational Validation Cycles 001, 002, Ergonomics Refinement v0.3.1, Real Engineering Operational Cycle 001, Concurrent Objective Operations Cycle 001, Governance Stabilization Cycle 001, and Governance Debt Recovery Cycle 001.
 
 ## Artifact Map
 
@@ -31,10 +31,10 @@ None created during these cycles.
 | TASK-001 | Run AEOS Operational Validation Cycle 001 | CLOSED | OBJ-001 | HND-001 | REV-001 | AUD-001 |
 | TASK-002 | Workflow hardening review | CLOSED | OBJ-002 | HND-002 | REV-002 | AUD-002 |
 | TASK-003 | Operational auditability validation | CLOSED | OBJ-002 | HND-003 | REV-003 | AUD-003 |
-| TASK-004 | Governance workflow hardening review | IN_PROGRESS | OBJ-004 | HND-004 | REV-004 | TBD |
-| TASK-005 | Operational traceability consistency review | IN_PROGRESS | OBJ-004 | HND-004 | REV-005 | TBD |
+| TASK-004 | Governance workflow hardening review | CLOSED | OBJ-004 | HND-004, HND-007 | REV-004 | TBD |
+| TASK-005 | Operational traceability consistency review | CLOSED | OBJ-004 | HND-004, HND-007 | REV-005 | TBD |
 | TASK-006 | Cross-project continuity coordination review | IN_PROGRESS | OBJ-004 | HND-004 | REV-004, REV-005 | TBD |
-| TASK-007 | Cross-project governance synchronization review | IN_PROGRESS | OBJ-005 | HND-005 | REV-006 | TBD |
+| TASK-007 | Cross-project governance synchronization review | CLOSED | OBJ-005 | HND-005, HND-007 | REV-006 | TBD |
 | TASK-008 | Reviewer workload coordination assessment | IN_PROGRESS | OBJ-005 | HND-005 | REV-006, REV-007 | TBD |
 | TASK-009 | Escalation accumulation analysis | IN_PROGRESS | OBJ-005 | HND-005 | REV-007 | TBD |
 | TASK-010 | Reviewer recovery coordination assessment | IN_PROGRESS | OBJ-004, OBJ-005 | HND-006 | REV-008 | TBD |
@@ -72,13 +72,14 @@ None created during these cycles.
 | HND-004 | TASK-004, TASK-005, TASK-006 | director-agent | 2026-05-18 | Next operational cycle owner |
 | HND-005 | TASK-007, TASK-008, TASK-009 | director-agent | 2026-05-18 | Next concurrent cycle owner |
 | HND-006 | TASK-010, TASK-011 | director-agent | 2026-05-18 | Next stabilization cycle owner |
+| HND-007 | TASK-004, TASK-005, TASK-007, INC-001 | director-agent | 2026-05-18 | Next recovery cycle owner |
 
 ### Incidents / Escalations
 
 | ID | Severity | Category | Status | Related Task |
 |----|----------|----------|--------|-------------|
 | ESC-001 | MEDIUM | Governance overhead | RESOLVED | TASK-002 |
-| INC-001 | MEDIUM | Traceability drift risk | ACTIVE | TASK-004, TASK-005, TASK-006 |
+| INC-001 | MEDIUM | Traceability drift risk | RESOLVED | TASK-004, TASK-005, TASK-006 |
 | ESC-002 | MEDIUM | Review overhead latency | IN_REVIEW | TASK-004, TASK-005, TASK-006, TASK-010, TASK-011 |
 | INC-002 | MEDIUM | Reviewer contention | ACTIVE | TASK-007, TASK-008, TASK-009 |
 | ESC-003 | MEDIUM | Cross-objective governance overload | OPEN | TASK-007, TASK-008, TASK-009, TASK-010, TASK-011 |
@@ -93,6 +94,7 @@ None created during these cycles.
 | OPR-003 | 2026-05-18 | implementer-agent | 2026-05-18 |
 | OPR-004 | 2026-05-18 | implementer-agent | 2026-05-18 |
 | OPR-005 | 2026-05-18 | implementer-agent | 2026-05-18 |
+| OPR-006 | 2026-05-18 | implementer-agent | 2026-05-18 |
 
 ### Governance Health Reports
 
@@ -103,6 +105,7 @@ None created during these cycles.
 | GHR-003 | 2026-05-18 | implementer-agent | HEALTHY WITH OBSERVATIONS |
 | GHR-004 | 2026-05-18 | implementer-agent | HEALTHY WITH CONCURRENCY CONCERNS |
 | GHR-005 | 2026-05-18 | implementer-agent | HEALTHY WITH STABILIZATION CONCERNS |
+| GHR-006 | 2026-05-18 | implementer-agent | HEALTHY WITH RECOVERY PROGRESS |
 
 ### Ergonomics Documents (v0.3.1)
 
@@ -138,22 +141,24 @@ OBJ-003 (Objective — ACTIVE)
   └── Tasks: TBD (future real project operational cycles)
 
 OBJ-004 (Objective — ACTIVE)
-  ├── TASK-004 (Task — IN_PROGRESS)
+  ├── TASK-004 (Task — CLOSED, recovery)
   │     ├── REV-004 (Review — APPROVE WITH OBSERVATIONS)
-  │     ├── INC-001 (Incident — ACTIVE)
+  │     ├── INC-001 (Incident — RESOLVED)
   │     ├── ESC-002 (Escalation — IN_REVIEW, partial recovery)
-  │     └── HND-004 (Handoff — COMPLETE, partial)
+  │     ├── HND-004 (Handoff — COMPLETE, partial)
+  │     └── HND-007 (Handoff — COMPLETE, recovery)
   │
-  ├── TASK-005 (Task — IN_PROGRESS)
+  ├── TASK-005 (Task — CLOSED, recovery)
   │     ├── REV-005 (Review — APPROVE WITH OBSERVATIONS)
-  │     ├── INC-001 (Incident — ACTIVE)
+  │     ├── INC-001 (Incident — RESOLVED)
   │     ├── ESC-002 (Escalation — IN_REVIEW, partial recovery)
-  │     └── HND-004 (Handoff — COMPLETE, partial)
+  │     ├── HND-004 (Handoff — COMPLETE, partial)
+  │     └── HND-007 (Handoff — COMPLETE, recovery)
   │
   └── TASK-006 (Task — IN_PROGRESS)
         ├── REV-004 (Review — APPROVE WITH OBSERVATIONS)
         ├── REV-005 (Review — APPROVE WITH OBSERVATIONS)
-        ├── INC-001 (Incident — ACTIVE)
+        ├── INC-001 (Incident — RESOLVED)
         ├── ESC-002 (Escalation — IN_REVIEW, partial recovery)
         └── HND-004 (Handoff — COMPLETE, partial)
 
@@ -176,13 +181,14 @@ GHR-003 (Governance Health Report — Cycle 001 Real Operations)
   └── References: OBJ-004, TASK-004, TASK-005, TASK-006, REV-004, REV-005, INC-001, ESC-002, HND-004
 
 OBJ-005 (Objective — ACTIVE, concurrent with OBJ-004)
-  ├── TASK-007 (Task — IN_PROGRESS)
+  ├── TASK-007 (Task — CLOSED, recovery)
   │     ├── REV-006 (Review — APPROVE WITH OBSERVATIONS)
-  │     ├── INC-001 (Incident — ACTIVE, cross-objective)
+  │     ├── INC-001 (Incident — RESOLVED, cross-objective)
   │     ├── INC-002 (Incident — ACTIVE)
   │     ├── ESC-002 (Escalation — IN_REVIEW, cross-objective)
   │     ├── ESC-003 (Escalation — OPEN)
-  │     └── HND-005 (Handoff — COMPLETE, concurrent)
+  │     ├── HND-005 (Handoff — COMPLETE, concurrent)
+  │     └── HND-007 (Handoff — COMPLETE, recovery)
   │
   ├── TASK-008 (Task — IN_PROGRESS)
   │     ├── REV-006 (Review — APPROVE WITH OBSERVATIONS)
@@ -193,7 +199,7 @@ OBJ-005 (Objective — ACTIVE, concurrent with OBJ-004)
   │
   └── TASK-009 (Task — IN_PROGRESS)
         ├── REV-007 (Review — APPROVE WITH OBSERVATIONS)
-        ├── INC-001 (Incident — ACTIVE, cross-objective)
+        ├── INC-001 (Incident — RESOLVED, cross-objective)
         ├── INC-002 (Incident — ACTIVE)
         ├── ESC-002 (Escalation — IN_REVIEW, cross-objective)
         ├── ESC-003 (Escalation — OPEN)
@@ -201,16 +207,17 @@ OBJ-005 (Objective — ACTIVE, concurrent with OBJ-004)
 
 TASK-010 (Task — IN_PROGRESS, shared across OBJ-004/OBJ-005)
   ├── REV-008 (Review — APPROVE WITH OBSERVATIONS)
-  ├── INC-001 (Incident — ACTIVE)
+  ├── INC-001 (Incident — RESOLVED)
   ├── INC-002 (Incident — ACTIVE)
   ├── INC-003 (Incident — ACTIVE)
   ├── ESC-002 (Escalation — IN_REVIEW)
   ├── ESC-003 (Escalation — OPEN)
-  └── HND-006 (Handoff — COMPLETE, stabilization)
+  ├── HND-006 (Handoff — COMPLETE, stabilization)
+  └── HND-007 (Handoff — COMPLETE, recovery)
 
 TASK-011 (Task — IN_PROGRESS, shared across OBJ-004/OBJ-005)
   ├── REV-009 (Review — APPROVE WITH OBSERVATIONS)
-  ├── INC-001 (Incident — ACTIVE)
+  ├── INC-001 (Incident — RESOLVED)
   ├── INC-002 (Incident — ACTIVE)
   ├── INC-003 (Incident — ACTIVE)
   ├── ESC-002 (Escalation — IN_REVIEW)
@@ -229,6 +236,12 @@ OPR-005 (Operational Report — Governance Stabilization Cycle 001)
 GHR-005 (Governance Health Report — Governance Stabilization Cycle 001)
   └── References: OBJ-004, OBJ-005, TASK-010, TASK-011, REV-008, REV-009, INC-001, INC-002, INC-003, ESC-002, ESC-003, HND-006
 
+OPR-006 (Operational Report — Governance Debt Recovery Cycle 001)
+  └── References: OBJ-004, OBJ-005, TASK-004, TASK-005, TASK-007, TASK-006, TASK-008, TASK-009, TASK-010, TASK-011, INC-001, INC-002, INC-003, ESC-002, ESC-003, HND-007
+
+GHR-006 (Governance Health Report — Governance Debt Recovery Cycle 001)
+  └── References: OBJ-004, OBJ-005, TASK-004, TASK-005, TASK-007, TASK-006, TASK-008, TASK-009, TASK-010, TASK-011, INC-001, INC-002, INC-003, ESC-002, ESC-003, HND-007
+
 Ergonomics v0.3.1:
   └── WORKFLOW_TIERING_GUIDANCE.md — reduces workflow overhead
   └── REVIEW_MINIMIZATION_GUIDANCE.md — reduces review proliferation
@@ -238,35 +251,35 @@ Ergonomics v0.3.1:
 
 ## Traceability Gaps
 
-- TASK-004, TASK-005, TASK-006 are IN_PROGRESS — audits pending task closure.
-- TASK-007, TASK-008, TASK-009 are IN_PROGRESS — audits pending task closure.
-- TASK-010, TASK-011 are IN_PROGRESS — audits pending task closure.
-- INC-001 is ACTIVE — traceability drift risk under active coordination.
+- TASK-004, TASK-005, TASK-007 are CLOSED — recovery completed, audits pending.
+- TASK-006, TASK-008, TASK-009, TASK-010, TASK-011 are IN_PROGRESS — audits pending task closure.
+- INC-001 is RESOLVED — traceability drift risk mitigated through disciplined index maintenance.
 - INC-002 is ACTIVE — reviewer contention under concurrent objectives.
 - INC-003 is ACTIVE — delayed governance review cycle causing continuity degradation.
 - ESC-002 is IN_REVIEW — partial recovery attempted but not resolved.
 - ESC-003 is OPEN — cross-objective governance overload unresolved intentionally.
 - OBJ-004 and OBJ-005 are both ACTIVE — concurrent objective pressure intentional.
-- Operational debt accumulating — 8 IN_PROGRESS tasks across 2 objectives.
+- Operational debt reduced — 5 IN_PROGRESS tasks across 2 objectives (down from 8).
 
 ## Validation Results
 
 - [x] All tasks reference valid objectives
 - [x] All closed tasks reference handoffs
+- [x] All closed tasks include closure summaries
+- [x] All resolved incidents include resolution summaries
 - [x] All ADR references use valid prefixes
 - [x] All handoff references use valid prefixes
 - [x] All incident references use valid prefixes
 - [x] No orphaned artifacts detected
-- [ ] TASK-004, TASK-005, TASK-006 are IN_PROGRESS — audits pending
-- [ ] TASK-007, TASK-008, TASK-009 are IN_PROGRESS — audits pending
-- [ ] TASK-010, TASK-011 are IN_PROGRESS — audits pending
-- [ ] INC-001 is ACTIVE — traceability drift risk monitored
+- [x] TASK-004, TASK-005, TASK-007 are CLOSED — recovery completed
+- [ ] TASK-006, TASK-008, TASK-009, TASK-010, TASK-011 are IN_PROGRESS — audits pending
+- [x] INC-001 is RESOLVED — traceability drift risk mitigated
 - [ ] INC-002 is ACTIVE — reviewer contention monitored
 - [ ] INC-003 is ACTIVE — delayed review cycle monitored
 - [ ] ESC-002 is IN_REVIEW — partial recovery in progress
 - [ ] ESC-003 is OPEN — cross-objective governance overload unresolved
 - [ ] OBJ-004 and OBJ-005 both ACTIVE — concurrent pressure intentional
-- [ ] Operational debt accumulating — 8 IN_PROGRESS tasks
+- [ ] Operational debt reduced — 5 IN_PROGRESS tasks (down from 8)
 
 ## Artifact Count
 
@@ -278,8 +291,9 @@ Ergonomics v0.3.1:
 | 004 | 1 | 3 | 2 | 0 | 1 | 1 | 1 | 2 | 0 | 1 | 12 |
 | 005 | 1 | 3 | 2 | 0 | 1 | 1 | 1 | 2 | 0 | 1 | 12 |
 | 006 | 0 | 2 | 2 | 0 | 1 | 1 | 0 | 2 | 0 | 1 | 9 |
-| **Total** | **5** | **11** | **9** | **3** | **6** | **3** | **3** | **10** | **4** | **3** | **56** |
+| 007 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 2 | 0 | 1 | 4 |
+| **Total** | **5** | **11** | **9** | **3** | **7** | **3** | **3** | **12** | **4** | **4** | **60** |
 
 ## Notes
 
-Index updated to include Governance Stabilization Cycle 001 artifacts. Total artifact count: 56. Two ACTIVE objectives (OBJ-004, OBJ-005) operating concurrently — intentional concurrency pressure. ESC-002 moved to IN_REVIEW (partial recovery) — first escalation status change. INC-003 created (delayed review cycle). Operational debt accumulating: 8 IN_PROGRESS tasks, 3 ACTIVE incidents, 1 IN_REVIEW escalation, 1 OPEN escalation. Recovery capacity grows slower than governance pressure accumulation. OBJ-003 remains ACTIVE — awaiting real project operational cycles.
+Index updated to include Governance Debt Recovery Cycle 001 artifacts. Total artifact count: 60. Recovery actions: TASK-004/005/007 CLOSED (37.5% task reduction), INC-001 RESOLVED (traceability drift mitigated), ESC-002 remains IN_REVIEW (partial recovery). Operational debt reduced: 5 IN_PROGRESS tasks (down from 8), 2 ACTIVE incidents (down from 3), 1 IN_REVIEW escalation, 1 OPEN escalation. Recovery capacity grows slower than governance pressure accumulation — fundamental asymmetry confirmed. Residual organizational scar tissue remains after apparent recovery. OBJ-003 remains ACTIVE — awaiting real project operational cycles.
