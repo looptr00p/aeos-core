@@ -1,12 +1,12 @@
 # Traceability Index
 
-**Index ID**: IDX-002
+**Index ID**: IDX-003
 **Date**: 2026-05-18
 **Created By**: implementer-agent
 
 ## Scope
 
-AEOS Operational Validation Cycles 001 and 002 — internal validation and external operational validation.
+AEOS Operational Validation Cycles 001, 002, and Ergonomics Refinement v0.3.1.
 
 ## Artifact Map
 
@@ -16,6 +16,7 @@ AEOS Operational Validation Cycles 001 and 002 — internal validation and exter
 |----|-------|--------|-------------|---------------|
 | OBJ-001 | Validate AEOS Core v0.3 through real operational cycle | CLOSED | None | TASK-001 |
 | OBJ-002 | Validate AEOS against external operational engineering initiative | CLOSED | None | TASK-002, TASK-003 |
+| OBJ-003 | Prepare AEOS for real engineering project usage | ACTIVE | None | TBD |
 
 ### Architecture Decisions
 
@@ -73,6 +74,15 @@ None created during these cycles.
 | GHR-001 | 2026-05-18 | auditor-agent | HEALTHY |
 | GHR-002 | 2026-05-18 | auditor-agent | HEALTHY |
 
+### Ergonomics Documents (v0.3.1)
+
+| ID | Type | Date |
+|----|------|------|
+| WORKFLOW_TIERING_GUIDANCE.md | Guidance | 2026-05-18 |
+| REVIEW_MINIMIZATION_GUIDANCE.md | Guidance | 2026-05-18 |
+| traceability_assistance_template.md | Template | 2026-05-18 |
+| OPERATIONAL_ERGONOMICS.md | Documentation | 2026-05-18 |
+
 ## Traceability Relationships
 
 ```
@@ -94,6 +104,9 @@ OBJ-002 (Objective — CLOSED)
         ├── AUD-003 (Audit — PASS WITH OBSERVATIONS)
         └── HND-003 (Handoff — COMPLETE)
 
+OBJ-003 (Objective — ACTIVE)
+  └── Tasks: TBD (future real project operational cycles)
+
 OPR-001 (Operational Report — Cycle 001)
   └── References: OBJ-001, TASK-001, REV-001, AUD-001, HND-001
 
@@ -105,6 +118,12 @@ GHR-001 (Governance Health Report — Cycle 001)
 
 GHR-002 (Governance Health Report — Cycle 002)
   └── References: OBJ-002, TASK-002, TASK-003, REV-002, REV-003, AUD-002, AUD-003, ESC-001
+
+Ergonomics v0.3.1:
+  └── WORKFLOW_TIERING_GUIDANCE.md — reduces workflow overhead
+  └── REVIEW_MINIMIZATION_GUIDANCE.md — reduces review proliferation
+  └── traceability_assistance_template.md — reduces manual traceability overhead
+  └── OPERATIONAL_ERGONOMICS.md — preserves institutional ergonomics knowledge
 ```
 
 ## Traceability Gaps
@@ -122,12 +141,13 @@ None.
 
 ## Artifact Count
 
-| Cycle | Objectives | Tasks | Reviews | Audits | Handoffs | Escalations | Reports | Total |
-|-------|-----------|-------|---------|--------|----------|-------------|---------|-------|
-| 001 | 1 | 1 | 1 | 1 | 1 | 0 | 2 | 7 |
-| 002 | 1 | 2 | 2 | 2 | 2 | 1 | 2 | 12 |
-| **Total** | **2** | **3** | **3** | **3** | **3** | **1** | **4** | **19** |
+| Cycle | Objectives | Tasks | Reviews | Audits | Handoffs | Escalations | Reports | Ergonomics | Total |
+|-------|-----------|-------|---------|--------|----------|-------------|---------|------------|-------|
+| 001 | 1 | 1 | 1 | 1 | 1 | 0 | 2 | 0 | 7 |
+| 002 | 1 | 2 | 2 | 2 | 2 | 1 | 2 | 0 | 12 |
+| 003 | 1 | 0 | 0 | 0 | 0 | 0 | 0 | 4 | 5 |
+| **Total** | **3** | **3** | **3** | **3** | **3** | **1** | **4** | **4** | **24** |
 
 ## Notes
 
-Index updated to include all Cycle 002 artifacts. Total artifact count: 19. No gaps or inconsistencies detected. Manual index maintenance required for each cycle.
+Index updated to include OBJ-003 and v0.3.1 ergonomics artifacts. Total artifact count: 24. No gaps or inconsistencies detected. OBJ-003 is ACTIVE — awaiting real project operational cycles.

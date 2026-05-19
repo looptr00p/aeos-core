@@ -317,6 +317,72 @@ def check_severity_labels():
     return all_ok
 
 
+def check_traceability_integrity():
+    print("\n[8] Traceability Integrity")
+    all_ok = True
+
+    all_ids = {}
+    malformed_ids = []
+
+    for mem_dir in MEMORY_DIRS:
+        artifacts = collect_memory_artifacts(mem_dir)
+        for fname, content in artifacts:
+            refs = find_traceability_refs(content)
+            for prefix, ids in refs.items():
+                for ref_id in ids:
+                    if ref_id not in all_ids:
+                        all_ids[ref_id] = []
+                    all_ids[ref_id].append(fname)
+
+    all_id_keys = set(all_ids.keys())
+
+    for ref_id in all_id_keys:
+        prefix = ref_id.split("-")[0]
+        if prefix not in TRACEABILITY_PREFIXES:
+            malformed_ids.append(ref_id)
+            all_ok = False
+
+    if malformed_ids:
+        for mid in malformed_ids:
+            print(f"  FAIL: Malformed ID prefix: {mid}")
+    else:
+        print("  OK:   No malformed ID prefixes")
+
+    duplicates = {k: v for k, v in all_ids.items() if len(v) > 1 and len(set(v)) > 1}
+    if duplicates:
+        for dup_id, files in duplicates.items():
+            print(f"  WARN: ID {dup_id} referenced in multiple files: {', '.join(files)}")
+    else:
+        print("  OK:   No duplicate lifecycle IDs")
+
+    all_referenced = set()
+    for mem_dir in MEMORY_DIRS:
+        artifacts = collect_memory_artifacts(mem_dir)
+        for fname, content in artifacts:
+            refs = find_traceability_refs(content)
+            for prefix, ids in refs.items():
+                all_referenced.update(ids)
+
+    defined_ids = set()
+    for mem_dir in MEMORY_DIRS:
+        artifacts = collect_memory_artifacts(mem_dir)
+        for fname, content in artifacts:
+            refs = find_traceability_refs(content)
+            for prefix, ids in refs.items():
+                for ref_id in ids:
+                    if ref_id.split("-")[0] == prefix:
+                        defined_ids.add(ref_id)
+
+    missing = all_referenced - defined_ids
+    if missing:
+        for mid in sorted(missing):
+            print(f"  WARN: Referenced ID not defined as artifact: {mid}")
+    else:
+        print("  OK:   All referenced IDs are defined as artifacts")
+
+    return all_ok
+
+
 # ── Main ─────────────────────────────────────────────────────────────
 
 def main():
@@ -332,6 +398,7 @@ def main():
     results.append(("Workflow Closure", check_workflow_closure()))
     results.append(("v0.3 Documents", check_v03_documents()))
     results.append(("Severity Labels", check_severity_labels()))
+    results.append(("Traceability Integrity", check_traceability_integrity()))
 
     print("\n" + "=" * 60)
     print("Summary")
