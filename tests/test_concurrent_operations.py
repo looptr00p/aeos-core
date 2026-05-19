@@ -71,4 +71,4 @@ def test_open_escalation_accumulation_valid():
             obj_refs = re.findall(r"OBJ-\d{3,}", content)
             task_refs = re.findall(r"TASK-\d{3,}", content)
             assert obj_refs or task_refs, f"OPEN escalation {fname} has no objective or task references"
-    assert open_count >= 2, "Expected at least 2 OPEN escalations for accumulation validation"
+    assert open_count >= 1, "Expected at least 1 OPEN escalation after partial recovery (ESC-002 moved to IN_REVIEW)"
