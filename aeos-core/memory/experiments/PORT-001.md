@@ -23,6 +23,9 @@ External operational validation and formatting/readability audit are required be
 - REV-EXP-001
 - AUD-EXP-001
 - PORTABILITY_RISK_ASSESSMENT_001.md
+- AUD-EXP-002
+- PORTING_CANDIDATE_REVIEW_001.md
+- FORMAT_READABILITY_AUDIT_001.md
 
 ## Porting Status
 

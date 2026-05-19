@@ -25,6 +25,9 @@ REQUIRED_EXPERIMENTAL_FILES = [
     "templates/porting_review_template.md",
     "docs/EXPERIMENTAL_LAB_OPERATING_NOTES.md",
     "memory/experiments/PORTABILITY_RISK_ASSESSMENT_001.md",
+    "memory/audits/AUD-EXP-002.md",
+    "memory/experiments/PORTING_CANDIDATE_REVIEW_001.md",
+    "memory/audits/FORMAT_READABILITY_AUDIT_001.md",
 ]
 
 
