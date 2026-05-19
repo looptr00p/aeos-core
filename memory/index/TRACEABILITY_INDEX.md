@@ -19,10 +19,13 @@ AEOS Operational Validation Cycles 001, 002, Ergonomics Refinement v0.3.1, Real 
 | OBJ-003 | Prepare AEOS for real engineering project usage | ACTIVE | None | TBD |
 | OBJ-004 | Operate Quant System Governance & Operational Hardening Initiative | ACTIVE | None | TASK-004, TASK-005, TASK-006 |
 | OBJ-005 | Cross-Project Operational Governance Coordination Initiative | ACTIVE | None | TASK-007, TASK-008, TASK-009 |
+| OBJ-006 | Repository Truth Reconciliation — Documentation and Structural Remediation | DRAFT | ADR-001 | TBD |
 
 ### Architecture Decisions
 
-None created during these cycles.
+| ID | Title | Status | Related Objectives | Related Tasks |
+|----|-------|--------|-------------------|---------------|
+| ADR-001 | Dual Directory Structure — Root Governance + Experimental Lab Subproject | PROPOSED | OBJ-006 | TBD |
 
 ### Tasks
 
@@ -292,8 +295,10 @@ Ergonomics v0.3.1:
 | 005 | 1 | 3 | 2 | 0 | 1 | 1 | 1 | 2 | 0 | 1 | 12 |
 | 006 | 0 | 2 | 2 | 0 | 1 | 1 | 0 | 2 | 0 | 1 | 9 |
 | 007 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 2 | 0 | 1 | 4 |
-| **Total** | **5** | **11** | **9** | **3** | **7** | **3** | **3** | **12** | **4** | **4** | **60** |
+| **Total** | **5** | **11** | **9** | **3** | **7** | **3** | **3** | **12** | **4** | **4** | **61** |
 
 ## Notes
 
-Index updated to include Governance Debt Recovery Cycle 001 artifacts. Total artifact count: 60. Recovery actions: TASK-004/005/007 CLOSED (37.5% task reduction), INC-001 RESOLVED (traceability drift mitigated), ESC-002 remains IN_REVIEW (partial recovery). Operational debt reduced: 5 IN_PROGRESS tasks (down from 8), 2 ACTIVE incidents (down from 3), 1 IN_REVIEW escalation, 1 OPEN escalation. Recovery capacity grows slower than governance pressure accumulation — fundamental asymmetry confirmed. Residual organizational scar tissue remains after apparent recovery. OBJ-003 remains ACTIVE — awaiting real project operational cycles.
+Index updated to include Governance Debt Recovery Cycle 001 artifacts. Total artifact count: 61 (corrected from 60 — column sum error). Recovery actions: TASK-004/005/007 CLOSED (37.5% task reduction), INC-001 RESOLVED (traceability drift mitigated), ESC-002 remains IN_REVIEW (partial recovery). Operational debt reduced: 5 IN_PROGRESS tasks (down from 8), 2 ACTIVE incidents (down from 3), 1 IN_REVIEW escalation, 1 OPEN escalation. Recovery capacity grows slower than governance pressure accumulation — fundamental asymmetry confirmed. Residual organizational scar tissue remains after apparent recovery. OBJ-003 remains ACTIVE — awaiting real project operational cycles.
+
+**2026-05-19 update**: Added OBJ-006 (Repository Truth Reconciliation) and ADR-001 (Dual Directory Structure). First ADR created. TRACEABILITY_INDEX.md directory structure updated to include `memory/reviews/` (9 review files verified). Artifact count corrected from 60 to 61.

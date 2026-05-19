@@ -37,7 +37,7 @@ INC-XXX (Incident)
 | Objectives | `memory/objectives/` | OBJ- | `templates/objective_template.md` |
 | Decisions | `memory/decisions/` | ADR- | `templates/adr_template.md` |
 | Tasks | `memory/tasks/` | TASK- | `templates/task_template.md` |
-| Reviews | `memory/audits/` | REV- | `templates/review_template.md` |
+| Reviews | `memory/reviews/` | REV- | `templates/review_template.md` |
 | Audits | `memory/audits/` | AUD- | `templates/audit_template.md` |
 | Handoffs | `memory/handoffs/` | HND- | `templates/handoff_template.md` |
 | Incidents | `memory/incidents/` | INC- | `templates/incident_template.md` |
