@@ -1,5 +1,7 @@
 # Operational Learnings — External Validation
 
+**Operational State**: EXPERIMENTAL
+
 ## Context
 
 These learnings come from AEOS External Operational Validation Cycle 001, which simulated a realistic external engineering initiative ("External AI Engineering Workflow Hardening Initiative") using AEOS governance, protocols, workflows, and lifecycle management.

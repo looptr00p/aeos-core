@@ -1,5 +1,7 @@
 # Governance Stabilization Learnings
 
+**Operational State**: EXPERIMENTAL
+
 ## Purpose
 
 Document what stabilizes governance pressure, what does not, and whether governance recovery scales slower than governance pressure accumulation. This is the primary learning artifact from Governance Stabilization Cycle 001.

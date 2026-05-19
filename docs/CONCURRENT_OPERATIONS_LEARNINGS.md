@@ -1,5 +1,7 @@
 # Concurrent Operations Learnings
 
+**Operational State**: EXPERIMENTAL
+
 ## Purpose
 
 Document what breaks first, what scales poorly, and what becomes operationally expensive when AEOS is applied to concurrent objective operations. This is the primary learning artifact from Concurrent Objective Operations Cycle 001.

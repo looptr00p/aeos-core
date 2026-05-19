@@ -1,5 +1,7 @@
 # Governance Debt Recovery Learnings
 
+**Operational State**: EXPERIMENTAL
+
 ## Purpose
 
 Document what recovery actions worked, what did not, and whether governance debt leaves residual organizational scar tissue. This is the primary learning artifact from Governance Debt Recovery Cycle 001.

@@ -1,5 +1,7 @@
 # Real Operations Learnings
 
+**Operational State**: EXPERIMENTAL
+
 ## Purpose
 
 Document what scales well, what scales poorly, and what becomes cognitively expensive when AEOS is applied to real engineering operational pressure. This is the primary learning artifact from Operational Cycle 001.
