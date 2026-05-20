@@ -242,6 +242,7 @@ AEOS Core v0.3 does NOT execute autonomous workflows.
 
 ## Documentation
 
+- [AEOS Constitutional Core](docs/AEOS_CONSTITUTIONAL_CORE.md) — shared operational doctrine across AEOS GPTs
 - [AEOS Overview](docs/AEOS_OVERVIEW.md)
 - [Operating Model](docs/OPERATING_MODEL.md)
 - [MVP Scope](docs/MVP_SCOPE.md)
