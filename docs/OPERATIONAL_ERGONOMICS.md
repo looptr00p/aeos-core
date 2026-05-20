@@ -1,5 +1,7 @@
 # Operational Ergonomics
 
+**Operational State**: EXPERIMENTAL
+
 ## Context
 
 This document records operational ergonomics findings from AEOS operational validation cycles 001 and 002. It identifies what should remain manual, what may be mechanically assisted, and what should never be automated.

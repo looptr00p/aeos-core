@@ -1,5 +1,7 @@
 # Operating Model
 
+**Operational State**: STRATEGIC
+
 ## Overview
 
 This document describes how AEOS Core operates in practice, including roles, responsibilities, and operational constraints.

@@ -1,5 +1,7 @@
 # Workflow Tiering Guidance
 
+**Operational State**: EXPERIMENTAL
+
 ## Purpose
 
 Reduce governance overhead for low-risk operational work without weakening governance invariants.

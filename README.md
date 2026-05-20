@@ -130,7 +130,7 @@ git pull
 ```bash
 pip install pytest pyyaml
 pytest tests/
-python scripts/aeos_lint.py
+python3 scripts/aeos_lint.py
 ```
 
 This validates:

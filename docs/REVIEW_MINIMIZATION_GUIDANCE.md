@@ -1,5 +1,7 @@
 # Review Minimization Guidance
 
+**Operational State**: EXPERIMENTAL
+
 ## Purpose
 
 Reduce review type proliferation discovered during external operational validation.

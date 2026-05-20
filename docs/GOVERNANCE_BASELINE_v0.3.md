@@ -1,6 +1,6 @@
 # AEOS Governance Baseline v0.3
 
-**Date**: 2026-05-19
+**Date**: 2026-05-20
 **Repository**: AEOS Core opencode
 **Phase**: Phase 0 (Governance/Bootstrap)
 **Baseline Type**: Governance stabilization checkpoint
@@ -40,7 +40,7 @@ The following classification reflects repository evidence at the time of baselin
 Repository-backed, active, and verifiable:
 
 - **State Classification Policy** (`governance/STATE_CLASSIFICATION_POLICY.md`) — 4-state operational maturity model active.
-- **Governance framework** — 8 governance files, 7 protocols, 12 templates, 6 workflows, 8 agent definitions.
+- **Governance framework** — 8 governance files, 7 protocols, 13 templates, 6 workflows, 8 agent definitions.
 - **Lifecycle system** — objectives, tasks, reviews, audits, handoffs, incidents, escalations with explicit state transitions.
 - **Traceability system** — OBJ-XXX, TASK-XXX, REV-XXX, AUD-XXX, HND-XXX, INC-XXX, ESC-XXX, ADR-XXX with cross-reference validation.
 - **Lint validation** (`scripts/aeos_lint.py`) — 11 deterministic checks, all passing.
@@ -54,7 +54,9 @@ Repository-backed, active, and verifiable:
 - **Safety rules** (`governance/SAFETY_RULES.md`) — explicit prohibitions on autonomous behavior, hidden memory, scope expansion.
 - **Permission model** (`governance/PERMISSION_MODEL.md`) — 4-level permission system (UNRESTRICTED, GOVERNANCE_READER, GOVERNANCE_WRITER, GOVERNANCE_ADMIN).
 - **Porting policy** (`aeos-core/governance/PORTING_POLICY.md`) — governs artifact transfer between experimental lab and canonical base.
-- **State-labeled documentation** — 9 of 19 docs in `docs/` carry explicit operational state labels.
+- **State-labeled documentation** — 14 of 20 docs in `docs/` carry explicit operational state labels.
+- **Governance dashboard** — read-only observability layer operational. Vite dev server validated. Scanner generates repository-grounded JSON.
+- **Operational session boot sequence** — documented in README: sync → validate → observe → operate.
 - **GPT Knowledge Base** — 59-file curated cognition package for external consumption, repository-grounded.
 
 ### EXPERIMENTAL
@@ -67,6 +69,10 @@ Behavioral normalization and operational validation still under evaluation:
 - **Governance dashboard template** — markdown-first dashboard template defined but not yet populated with longitudinal data.
 - **Operational learnings** — 5 learnings documents from real operational cycles (concurrent operations, debt recovery, stabilization, external validation, real operations). These are retrospective findings, not enforced policy.
 - **Epistemic governance layer** — state classification policy is implemented, but its behavioral effects are still being observed.
+- **Operational ergonomics** — findings from operational validation cycles. What should remain manual vs. mechanically assisted.
+- **Review minimization guidance** — reduces review type proliferation. Under operational evaluation.
+- **Workflow tiering guidance** — reduces governance overhead for low-risk work. Under operational evaluation.
+- **Operating model** — strategic doctrine for AEOS roles, responsibilities, and operational constraints.
 
 ### PROPOSED
 
@@ -100,7 +106,7 @@ All metrics are derived from repository evidence at baseline capture date. No es
 |----------|-------|----------|
 | Governance files | 8 | `governance/` |
 | Protocols | 7 | `protocols/` |
-| Templates | 12 | `templates/` |
+| Templates | 13 | `templates/` |
 | Workflows | 6 | `workflows/` |
 | Agent definitions | 8 | `agents/` |
 
@@ -145,8 +151,8 @@ All metrics are derived from repository evidence at baseline capture date. No es
 
 | Category | Count | Notes |
 |----------|-------|-------|
-| Total docs | 19 | `docs/` |
-| State-classified docs | 9 | 47% of docs carry explicit operational state labels |
+| Total docs | 20 | `docs/` |
+| State-classified docs | 14 | 70% of docs carry explicit operational state labels |
 | Knowledge base files | 59 | `gpt_knowledge_base/` |
 
 ### Uncertainty
