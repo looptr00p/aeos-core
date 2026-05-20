@@ -1,5 +1,5 @@
 {
-  "scannedAt": "2026-05-20T00:54:17.992Z",
+  "scannedAt": "2026-05-20T03:32:30.385Z",
   "rootPath": "/Users/nicolas/Documents/AEOS_Core_opencode",
   "overview": {
     "governanceCount": 8,
@@ -9,8 +9,8 @@
     "agentCount": 7,
     "objectiveCount": 8,
     "adrCount": 3,
-    "docCount": 20,
-    "stateClassifiedCount": 10,
+    "docCount": 21,
+    "stateClassifiedCount": 14,
     "knowledgeBaseCount": 58,
     "testCount": 14,
     "lintChecks": 11,
@@ -402,6 +402,13 @@
         "modified": "2026-05-19"
       },
       {
+        "file": "OPERATIONAL_ERGONOMICS.md",
+        "path": "docs/OPERATIONAL_ERGONOMICS.md",
+        "title": "Operational Ergonomics",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-20"
+      },
+      {
         "file": "OPERATIONAL_LEARNINGS_EXTERNAL_VALIDATION.md",
         "path": "docs/OPERATIONAL_LEARNINGS_EXTERNAL_VALIDATION.md",
         "title": "Operational Learnings — External Validation",
@@ -414,6 +421,20 @@
         "title": "Real Operations Learnings",
         "operationalState": "EXPERIMENTAL",
         "modified": "2026-05-19"
+      },
+      {
+        "file": "REVIEW_MINIMIZATION_GUIDANCE.md",
+        "path": "docs/REVIEW_MINIMIZATION_GUIDANCE.md",
+        "title": "Review Minimization Guidance",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-20"
+      },
+      {
+        "file": "WORKFLOW_TIERING_GUIDANCE.md",
+        "path": "docs/WORKFLOW_TIERING_GUIDANCE.md",
+        "title": "Workflow Tiering Guidance",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-20"
       }
     ],
     "PROPOSED": [
@@ -439,9 +460,23 @@
         "title": "Governance Continuity",
         "operationalState": "STRATEGIC",
         "modified": "2026-05-19"
+      },
+      {
+        "file": "OPERATING_MODEL.md",
+        "path": "docs/OPERATING_MODEL.md",
+        "title": "Operating Model",
+        "operationalState": "STRATEGIC",
+        "modified": "2026-05-20"
       }
     ],
     "UNLABELED": [
+      {
+        "file": "AEOS_CONSTITUTIONAL_CORE.md",
+        "path": "docs/AEOS_CONSTITUTIONAL_CORE.md",
+        "title": null,
+        "operationalState": null,
+        "modified": "2026-05-20"
+      },
       {
         "file": "AEOS_OVERVIEW.md",
         "path": "docs/AEOS_OVERVIEW.md",
@@ -454,7 +489,7 @@
         "path": "docs/GOVERNANCE_BASELINE_v0.3.md",
         "title": null,
         "operationalState": "IMPLEMENTED` metadata fields. CURRENT_CAPABILITY_MATRIX.md uses a 5-state vocabulary (IMPLEMENTED/DEFINED/UNVERIFIED/PARTIAL/NOT PRESENT) that does not map cleanly to the policy's 4 states.",
-        "modified": "2026-05-19"
+        "modified": "2026-05-20"
       },
       {
         "file": "GOVERNANCE_DASHBOARD_TEMPLATE.md",
@@ -478,20 +513,6 @@
         "modified": "2026-05-18"
       },
       {
-        "file": "OPERATING_MODEL.md",
-        "path": "docs/OPERATING_MODEL.md",
-        "title": "Operating Model",
-        "operationalState": null,
-        "modified": "2026-05-18"
-      },
-      {
-        "file": "OPERATIONAL_ERGONOMICS.md",
-        "path": "docs/OPERATIONAL_ERGONOMICS.md",
-        "title": "Operational Ergonomics",
-        "operationalState": null,
-        "modified": "2026-05-19"
-      },
-      {
         "file": "OPERATIONAL_EXAMPLES.md",
         "path": "docs/OPERATIONAL_EXAMPLES.md",
         "title": "Operational Examples",
@@ -504,20 +525,6 @@
         "title": "Review Cadence",
         "operationalState": null,
         "modified": "2026-05-18"
-      },
-      {
-        "file": "REVIEW_MINIMIZATION_GUIDANCE.md",
-        "path": "docs/REVIEW_MINIMIZATION_GUIDANCE.md",
-        "title": "Review Minimization Guidance",
-        "operationalState": null,
-        "modified": "2026-05-19"
-      },
-      {
-        "file": "WORKFLOW_TIERING_GUIDANCE.md",
-        "path": "docs/WORKFLOW_TIERING_GUIDANCE.md",
-        "title": "Workflow Tiering Guidance",
-        "operationalState": null,
-        "modified": "2026-05-19"
       }
     ]
   },
@@ -536,6 +543,6 @@
       "**Epistemic classification drift** — over time, the boundary between EXPERIMENTAL and IMPLEMENTED may blur as experimental findings accumulate. Without periodic re-evaluation, experimental documents may be treated as implemented policy by default.",
       "**CI gap** — CI workflow runs `aeos-core/tests` (3 tests) but not root `tests/` (11 tests). Governance validation suite is not enforced on push/PR."
     ],
-    "modified": "2026-05-19"
+    "modified": "2026-05-20"
   }
 }
