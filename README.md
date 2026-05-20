@@ -187,3 +187,45 @@ Use explicit operational state classification where implementation maturity may 
 ## Governance Baseline
 
 A formal governance stabilization checkpoint is documented in [GOVERNANCE_BASELINE_v0.3.md](docs/GOVERNANCE_BASELINE_v0.3.md). It preserves a known-good operational state for rollback, drift comparison, and longitudinal analysis.
+
+## Running AEOS Locally
+
+AEOS is **not** a daemon, SaaS platform, autonomous agent system, or orchestration runtime.
+
+AEOS is operated through:
+- Repository state (markdown governance artifacts)
+- Deterministic validation (`aeos_lint.py`)
+- OpenCode sessions (human-in-the-loop)
+- Human review and approval
+- Dashboard observability (read-only)
+
+### Setup
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/looptr00p/aeos-core.git
+cd aeos-core
+
+# 2. Run lint/validation
+python3 scripts/aeos_lint.py
+
+# 3. Install dashboard dependencies
+cd dashboard
+npm install
+
+# 4. Generate dashboard data from repository markdown
+npm run scan
+
+# 5. Start dashboard locally (opens browser)
+npm run dev
+
+# 6. Open dashboard in browser (auto-opens on npm run dev)
+# Dashboard is read-only — repository markdown remains the source of truth
+
+# 7. Begin an AEOS operational session using OpenCode
+# All governance work happens through markdown artifacts, not the dashboard
+```
+
+### Dashboard
+
+The [dashboard](dashboard/) is a read-only observability layer. It visualizes repository-grounded governance state but does not make governance decisions. See [dashboard/README.md](dashboard/README.md) for details.

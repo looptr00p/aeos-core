@@ -1,0 +1,541 @@
+{
+  "scannedAt": "2026-05-20T00:54:17.992Z",
+  "rootPath": "/Users/nicolas/Documents/AEOS_Core_opencode",
+  "overview": {
+    "governanceCount": 8,
+    "protocolCount": 7,
+    "templateCount": 12,
+    "workflowCount": 6,
+    "agentCount": 7,
+    "objectiveCount": 8,
+    "adrCount": 3,
+    "docCount": 20,
+    "stateClassifiedCount": 10,
+    "knowledgeBaseCount": 58,
+    "testCount": 14,
+    "lintChecks": 11,
+    "lintExists": true
+  },
+  "objectives": [
+    {
+      "file": "OBJ-001.md",
+      "path": "memory/objectives/OBJ-001.md",
+      "id": "OBJ-001",
+      "title": "Validate AEOS Core v0.3 through real operational cycle",
+      "status": "CLOSED",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "OBJ-002.md",
+      "path": "memory/objectives/OBJ-002.md",
+      "id": "OBJ-002",
+      "title": "Validate AEOS against external operational engineering initiative",
+      "status": "CLOSED",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "OBJ-003.md",
+      "path": "memory/objectives/OBJ-003.md",
+      "id": "OBJ-003",
+      "title": "Prepare AEOS for real engineering project usage",
+      "status": "ACTIVE",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "OBJ-004.md",
+      "path": "memory/objectives/OBJ-004.md",
+      "id": "OBJ-004",
+      "title": "Operate Quant System Governance & Operational Hardening Initiative",
+      "status": "ACTIVE",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "OBJ-005.md",
+      "path": "memory/objectives/OBJ-005.md",
+      "id": "OBJ-005",
+      "title": "Cross-Project Operational Governance Coordination Initiative",
+      "status": "ACTIVE",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "OBJ-006.md",
+      "path": "memory/objectives/OBJ-006.md",
+      "id": "OBJ-006",
+      "title": "Repository Truth Reconciliation — Documentation and Structural Remediation",
+      "status": "DRAFT",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "OBJ-007.md",
+      "path": "memory/objectives/OBJ-007.md",
+      "id": "OBJ-007",
+      "title": "Governance Enforcement Layer — From Declarative to Operationally Enforceable",
+      "status": "DRAFT",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "OBJ-008.md",
+      "path": "memory/objectives/OBJ-008.md",
+      "id": "OBJ-008",
+      "title": "Governance Pressure Simulation Framework — Observability and Longitudinal Measurement",
+      "status": "DRAFT",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    }
+  ],
+  "adrs": [
+    {
+      "file": "ADR-001.md",
+      "path": "memory/decisions/ADR-001.md",
+      "id": "ADR-001",
+      "title": "Dual Directory Structure — Root Governance + Experimental Lab Subproject",
+      "status": "PROPOSED",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "ADR-002.md",
+      "path": "memory/decisions/ADR-002.md",
+      "id": "ADR-002",
+      "title": "Deterministic Governance Enforcement",
+      "status": "PROPOSED",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "ADR-003.md",
+      "path": "memory/decisions/ADR-003.md",
+      "id": "ADR-003",
+      "title": "Operational Governance Observability",
+      "status": "PROPOSED",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    }
+  ],
+  "governance": [
+    {
+      "file": "AGENTS.md",
+      "path": "governance/AGENTS.md",
+      "title": "AGENTS.md",
+      "operationalState": null,
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "ESCALATION_POLICY.md",
+      "path": "governance/ESCALATION_POLICY.md",
+      "title": "ESCALATION_POLICY.md",
+      "operationalState": null,
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "GOVERNANCE_SEVERITY_MODEL.md",
+      "path": "governance/GOVERNANCE_SEVERITY_MODEL.md",
+      "title": "Governance Severity Model",
+      "operationalState": null,
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "PERMISSION_MODEL.md",
+      "path": "governance/PERMISSION_MODEL.md",
+      "title": "PERMISSION_MODEL.md",
+      "operationalState": null,
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "PHASE_POLICY.md",
+      "path": "governance/PHASE_POLICY.md",
+      "title": "PHASE_POLICY.md",
+      "operationalState": null,
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "REVIEW_REQUIREMENTS.md",
+      "path": "governance/REVIEW_REQUIREMENTS.md",
+      "title": "REVIEW_REQUIREMENTS.md",
+      "operationalState": null,
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "SAFETY_RULES.md",
+      "path": "governance/SAFETY_RULES.md",
+      "title": "SAFETY_RULES.md",
+      "operationalState": null,
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "STATE_CLASSIFICATION_POLICY.md",
+      "path": "governance/STATE_CLASSIFICATION_POLICY.md",
+      "title": "STATE_CLASSIFICATION_POLICY.md",
+      "operationalState": null,
+      "modified": "2026-05-19"
+    }
+  ],
+  "protocols": [
+    {
+      "file": "ADR_PROTOCOL.md",
+      "path": "protocols/ADR_PROTOCOL.md",
+      "title": "ADR_PROTOCOL.md",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "CONTEXT_PROTOCOL.md",
+      "path": "protocols/CONTEXT_PROTOCOL.md",
+      "title": "CONTEXT_PROTOCOL.md",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "HANDOFF_PROTOCOL.md",
+      "path": "protocols/HANDOFF_PROTOCOL.md",
+      "title": "HANDOFF_PROTOCOL.md",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "INCIDENT_PROTOCOL.md",
+      "path": "protocols/INCIDENT_PROTOCOL.md",
+      "title": "INCIDENT_PROTOCOL.md",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "MEMORY_PROTOCOL.md",
+      "path": "protocols/MEMORY_PROTOCOL.md",
+      "title": "MEMORY_PROTOCOL.md",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "REVIEW_PROTOCOL.md",
+      "path": "protocols/REVIEW_PROTOCOL.md",
+      "title": "REVIEW_PROTOCOL.md",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "TASK_PROTOCOL.md",
+      "path": "protocols/TASK_PROTOCOL.md",
+      "title": "TASK_PROTOCOL.md",
+      "modified": "2026-05-18"
+    }
+  ],
+  "templates": [
+    {
+      "file": "adr_template.md",
+      "path": "templates/adr_template.md",
+      "title": "Architecture Decision Record Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "approval_record_template.md",
+      "path": "templates/approval_record_template.md",
+      "title": "Approval Record Template",
+      "modified": "2026-05-19"
+    },
+    {
+      "file": "audit_template.md",
+      "path": "templates/audit_template.md",
+      "title": "Audit Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "escalation_template.md",
+      "path": "templates/escalation_template.md",
+      "title": "Escalation Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "governance_health_report_template.md",
+      "path": "templates/governance_health_report_template.md",
+      "title": "Governance Health Report Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "handoff_template.md",
+      "path": "templates/handoff_template.md",
+      "title": "Handoff Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "incident_template.md",
+      "path": "templates/incident_template.md",
+      "title": "Incident Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "objective_template.md",
+      "path": "templates/objective_template.md",
+      "title": "Objective Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "operational_report_template.md",
+      "path": "templates/operational_report_template.md",
+      "title": "Operational Report Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "review_template.md",
+      "path": "templates/review_template.md",
+      "title": "Review Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "task_template.md",
+      "path": "templates/task_template.md",
+      "title": "Task Template",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "traceability_assistance_template.md",
+      "path": "templates/traceability_assistance_template.md",
+      "title": "Traceability Assistance Template",
+      "modified": "2026-05-19"
+    }
+  ],
+  "workflows": [
+    {
+      "file": "architecture_change_workflow.md",
+      "path": "workflows/architecture_change_workflow.md",
+      "title": "Architecture Change Workflow",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "audit_workflow.md",
+      "path": "workflows/audit_workflow.md",
+      "title": "Audit Workflow",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "bugfix_workflow.md",
+      "path": "workflows/bugfix_workflow.md",
+      "title": "Bugfix Workflow",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "feature_workflow.md",
+      "path": "workflows/feature_workflow.md",
+      "title": "Feature Workflow",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "incident_workflow.md",
+      "path": "workflows/incident_workflow.md",
+      "title": "Incident Workflow",
+      "modified": "2026-05-18"
+    },
+    {
+      "file": "research_workflow.md",
+      "path": "workflows/research_workflow.md",
+      "title": "Research Workflow",
+      "modified": "2026-05-18"
+    }
+  ],
+  "agents": [
+    {
+      "name": "architect",
+      "path": "agents/architect/agent.yaml",
+      "exists": false
+    },
+    {
+      "name": "auditor",
+      "path": "agents/auditor/agent.yaml",
+      "exists": false
+    },
+    {
+      "name": "director",
+      "path": "agents/director/agent.yaml",
+      "exists": false
+    },
+    {
+      "name": "documentation",
+      "path": "agents/documentation/agent.yaml",
+      "exists": false
+    },
+    {
+      "name": "implementer",
+      "path": "agents/implementer/agent.yaml",
+      "exists": false
+    },
+    {
+      "name": "qa",
+      "path": "agents/qa/agent.yaml",
+      "exists": false
+    },
+    {
+      "name": "reviewer",
+      "path": "agents/reviewer/agent.yaml",
+      "exists": false
+    }
+  ],
+  "stateClassification": {
+    "IMPLEMENTED": [],
+    "EXPERIMENTAL": [
+      {
+        "file": "CONCURRENT_OPERATIONS_LEARNINGS.md",
+        "path": "docs/CONCURRENT_OPERATIONS_LEARNINGS.md",
+        "title": "Concurrent Operations Learnings",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "GOVERNANCE_DEBT_RECOVERY_LEARNINGS.md",
+        "path": "docs/GOVERNANCE_DEBT_RECOVERY_LEARNINGS.md",
+        "title": "Governance Debt Recovery Learnings",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "GOVERNANCE_PRESSURE_SIMULATION.md",
+        "path": "docs/GOVERNANCE_PRESSURE_SIMULATION.md",
+        "title": "Governance Pressure Simulation Framework",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "GOVERNANCE_STABILIZATION_LEARNINGS.md",
+        "path": "docs/GOVERNANCE_STABILIZATION_LEARNINGS.md",
+        "title": "Governance Stabilization Learnings",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "OPERATIONAL_LEARNINGS_EXTERNAL_VALIDATION.md",
+        "path": "docs/OPERATIONAL_LEARNINGS_EXTERNAL_VALIDATION.md",
+        "title": "Operational Learnings — External Validation",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "REAL_OPERATIONS_LEARNINGS.md",
+        "path": "docs/REAL_OPERATIONS_LEARNINGS.md",
+        "title": "Real Operations Learnings",
+        "operationalState": "EXPERIMENTAL",
+        "modified": "2026-05-19"
+      }
+    ],
+    "PROPOSED": [
+      {
+        "file": "AEOS_VNEXT_DESIGN.md",
+        "path": "docs/AEOS_VNEXT_DESIGN.md",
+        "title": "CI runs Python 3.11. Local development: >=3.10.",
+        "operationalState": "PROPOSED",
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "GOVERNANCE_METRICS_FRAMEWORK.md",
+        "path": "docs/GOVERNANCE_METRICS_FRAMEWORK.md",
+        "title": "Governance Metrics Framework",
+        "operationalState": "PROPOSED",
+        "modified": "2026-05-19"
+      }
+    ],
+    "STRATEGIC": [
+      {
+        "file": "GOVERNANCE_CONTINUITY.md",
+        "path": "docs/GOVERNANCE_CONTINUITY.md",
+        "title": "Governance Continuity",
+        "operationalState": "STRATEGIC",
+        "modified": "2026-05-19"
+      }
+    ],
+    "UNLABELED": [
+      {
+        "file": "AEOS_OVERVIEW.md",
+        "path": "docs/AEOS_OVERVIEW.md",
+        "title": null,
+        "operationalState": null,
+        "modified": "2026-05-18"
+      },
+      {
+        "file": "GOVERNANCE_BASELINE_v0.3.md",
+        "path": "docs/GOVERNANCE_BASELINE_v0.3.md",
+        "title": null,
+        "operationalState": "IMPLEMENTED` metadata fields. CURRENT_CAPABILITY_MATRIX.md uses a 5-state vocabulary (IMPLEMENTED/DEFINED/UNVERIFIED/PARTIAL/NOT PRESENT) that does not map cleanly to the policy's 4 states.",
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "GOVERNANCE_DASHBOARD_TEMPLATE.md",
+        "path": "docs/GOVERNANCE_DASHBOARD_TEMPLATE.md",
+        "title": "Governance Dashboard Template",
+        "operationalState": null,
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "GOVERNANCE_ENFORCEMENT_LAYER.md",
+        "path": "docs/GOVERNANCE_ENFORCEMENT_LAYER.md",
+        "title": "Governance Enforcement Layer — Complete Design",
+        "operationalState": null,
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "MVP_SCOPE.md",
+        "path": "docs/MVP_SCOPE.md",
+        "title": "MVP Scope",
+        "operationalState": null,
+        "modified": "2026-05-18"
+      },
+      {
+        "file": "OPERATING_MODEL.md",
+        "path": "docs/OPERATING_MODEL.md",
+        "title": "Operating Model",
+        "operationalState": null,
+        "modified": "2026-05-18"
+      },
+      {
+        "file": "OPERATIONAL_ERGONOMICS.md",
+        "path": "docs/OPERATIONAL_ERGONOMICS.md",
+        "title": "Operational Ergonomics",
+        "operationalState": null,
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "OPERATIONAL_EXAMPLES.md",
+        "path": "docs/OPERATIONAL_EXAMPLES.md",
+        "title": "Operational Examples",
+        "operationalState": null,
+        "modified": "2026-05-18"
+      },
+      {
+        "file": "REVIEW_CADENCE.md",
+        "path": "docs/REVIEW_CADENCE.md",
+        "title": "Review Cadence",
+        "operationalState": null,
+        "modified": "2026-05-18"
+      },
+      {
+        "file": "REVIEW_MINIMIZATION_GUIDANCE.md",
+        "path": "docs/REVIEW_MINIMIZATION_GUIDANCE.md",
+        "title": "Review Minimization Guidance",
+        "operationalState": null,
+        "modified": "2026-05-19"
+      },
+      {
+        "file": "WORKFLOW_TIERING_GUIDANCE.md",
+        "path": "docs/WORKFLOW_TIERING_GUIDANCE.md",
+        "title": "Workflow Tiering Guidance",
+        "operationalState": null,
+        "modified": "2026-05-19"
+      }
+    ]
+  },
+  "baseline": {
+    "file": "GOVERNANCE_BASELINE_v0.3.md",
+    "path": "docs/GOVERNANCE_BASELINE_v0.3.md",
+    "version": "v0.3",
+    "risks": [
+      "**Knowledge base drift** — `gpt_knowledge_base/` contains 59 files mirrored from the repository. State labels added to `docs/` after KB creation are not reflected in KB copies. If KB is consumed independently, epistemic clarity is reduced.",
+      "**Governance inflation pressure** — 5 governance commits in a single day (2026-05-19). Concentrated governance activity can create the appearance of maturity acceleration. The commits are correct (adding labels, not capabilities), but the pattern could normalize rapid governance changes.",
+      "**Semantic inconsistency risk** — README.md uses `[IMPLEMENTED]` inline tags; docs use `**Operational State**: IMPLEMENTED` metadata fields. CURRENT_CAPABILITY_MATRIX.md uses a 5-state vocabulary (IMPLEMENTED/DEFINED/UNVERIFIED/PARTIAL/NOT PRESENT) that does not map cleanly to the policy's 4 states.",
+      "**Contributor scaling pressure** — all governance work to date has been performed by a single human operator. Multi-contributor governance consistency has not been validated.",
+      "**Policy ritualization risk** — state labels are currently applied with explicit rationale in commit messages. If future labeling becomes mechanical (label added without explanation), ritualization has begun.",
+      "**Operational review bottleneck** — 3 ACTIVE objectives (OBJ-003, OBJ-004, OBJ-005) with 5 IN_PROGRESS tasks compete for 2 reviewers (reviewer-agent, auditor-agent). Reviewer saturation is 0.83 (CRITICAL threshold: >0.8).",
+      "**Future enforcement complexity** — OBJ-007 proposes 10 new lint checks. If implemented, total lint checks would increase from 11 to 21. Governance enforcement complexity would nearly double.",
+      "**Epistemic classification drift** — over time, the boundary between EXPERIMENTAL and IMPLEMENTED may blur as experimental findings accumulate. Without periodic re-evaluation, experimental documents may be treated as implemented policy by default.",
+      "**CI gap** — CI workflow runs `aeos-core/tests` (3 tests) but not root `tests/` (11 tests). Governance validation suite is not enforced on push/PR."
+    ],
+    "modified": "2026-05-19"
+  }
+}

@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/components/adrview.tsx","./src/components/baselineview.tsx","./src/components/governanceview.tsx","./src/components/objectivesview.tsx","./src/components/overviewview.tsx","./src/components/risksview.tsx","./src/components/stateview.tsx","./src/data/types.ts"],"version":"5.6.3"}
