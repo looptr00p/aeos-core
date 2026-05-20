@@ -2,9 +2,41 @@
 
 AI Engineering Operating System. Governance-first, repo-driven, markdown-first, human-governed, deterministic, auditable, reproducible.
 
-## What is AEOS?
+## What AEOS Actually Is
 
-AEOS (AI Engineering Operating System) is a structured governance framework for AI-assisted software engineering. It provides explicit governance documents, protocols, templates, agent definitions, and workflows to ensure AI-assisted engineering remains safe, auditable, and human-controlled.
+AEOS is not "run" as an autonomous system. It has no daemon, no orchestration engine, no runtime agents, and no self-governing logic.
+
+AEOS is operated through **governed sessions over real projects**. Each session produces markdown artifacts that are committed to git, validated by deterministic scripts, and reviewed by humans.
+
+AEOS operates through:
+- **Repository governance** — rules, protocols, and workflows defined in markdown files.
+- **Operational workflows** — structured lifecycles from objective creation through closure.
+- **Markdown artifacts** — objectives, tasks, reviews, audits, handoffs, incidents, escalations, ADRs.
+- **Longitudinal operational sessions** — discrete work sessions governed by explicit objectives.
+- **OpenCode/LLM-assisted cognition** — AI-assisted engineering within strict governance boundaries.
+- **Human review** — no artifact is approved without human judgment.
+
+**AEOS is not "run." It is operated.** Each operational session follows the same pattern: define an objective, create tasks, produce artifacts, validate with lint, review, audit, and close with a handoff. The repository state is the system state.
+
+## Repository Structure
+
+| Directory | Purpose |
+|-----------|---------|
+| `governance/` | Rules, constraints, permission model, safety rules, severity model, state classification policy |
+| `protocols/` | How work is done — task, review, context, memory, handoff, incident, and ADR protocols |
+| `templates/` | Reusable artifact templates — objectives, tasks, reviews, audits, handoffs, incidents, escalations |
+| `workflows/` | End-to-end process definitions — feature, bugfix, architecture change, audit, incident, research |
+| `agents/` | Agent definitions and registry — director, architect, implementer, reviewer, auditor, QA, documentation |
+| `memory/` | Explicit institutional memory — objectives, tasks, reviews, audits, handoffs, incidents, decisions, research |
+| `memory/objectives/` | OBJ-XXX files — operational goals with status (ACTIVE/DRAFT/CLOSED) |
+| `memory/decisions/` | ADR-XXX files — architecture decision records |
+| `memory/incidents/` | INC-XXX and ESC-XXX files — incidents and escalations |
+| `memory/research/` | OPR-XXX and GHR-XXX files — operational reports and governance health reports |
+| `docs/` | Operational documentation — learnings, design documents, baselines, simulation frameworks |
+| `scripts/` | Deterministic validation — `aeos_lint.py` checks repository integrity |
+| `tests/` | Repository structure validation — pytest tests for governance, protocols, templates, agents, workflows |
+| `gpt_knowledge_base/` | Curated cognition package for external consumption — repository-grounded, not volatile state |
+| `dashboard/` | Read-only observability layer — visualizes repository state, does not make governance decisions |
 
 ## Why AEOS Exists
 
@@ -44,19 +76,12 @@ All operations must be traceable to specific agents, tasks, and objectives; docu
 
 ## Repository Overview
 
-```
-aeos-core/
-  governance/       Rules, constraints, and policies
-  protocols/        How work is done
-  templates/        Reusable artifact templates
-  agents/           Agent definitions and registry
-  workflows/        End-to-end process definitions
-  memory/           Explicit institutional memory
-    index/          Traceability index and artifact relationships
-  scripts/          Operational validation (aeos_lint.py)
-  tests/            Repository structure validation
-  docs/             Operational documentation
-```
+See [Repository Structure](#repository-structure) above for directory purposes.
+
+Key artifact counts at baseline v0.3:
+- 8 governance files, 7 protocols, 12 templates, 6 workflows, 7 agents
+- 8 objectives (2 CLOSED, 3 ACTIVE, 3 DRAFT), 3 ADRs (all PROPOSED)
+- 11 lint checks (all passing), 14 test files defined
 
 ## v0.3 Additions
 
@@ -78,19 +103,70 @@ AEOS Core v0.3 still does NOT include:
 - Distributed execution.
 - Workflow execution engines.
 
-## Quick Start
+## Running AEOS Locally
+
+AEOS is **not** a daemon, SaaS platform, autonomous agent system, or orchestration runtime.
+
+AEOS is operated through:
+- Repository state (markdown governance artifacts)
+- Deterministic validation (`aeos_lint.py`)
+- OpenCode sessions (human-in-the-loop)
+- Human review and approval
+- Dashboard observability (read-only)
+
+### Setup
 
 ```bash
-# Install dependencies
+# 1. Clone the repository
+git clone https://github.com/looptr00p/aeos-core.git
+cd aeos-core
+
+# 2. Install Python dependencies
 pip install pytest pyyaml
 
-# Run validation tests
-cd aeos-core
-pytest tests/
+# 3. Run lint/validation
+python3 scripts/aeos_lint.py
 
-# Run operational lint
-python scripts/aeos_lint.py
+# 4. (Optional) Run pytest validation
+pytest tests/ -v
+
+# 5. Install dashboard dependencies
+cd dashboard
+npm install
+
+# 6. Generate dashboard data from repository markdown
+npm run scan
+
+# 7. Start dashboard locally (opens browser)
+npm run dev
+
+# 8. Begin an AEOS operational session using OpenCode
+# All governance work happens through markdown artifacts, not the dashboard
 ```
+
+### How an Operational Session Works
+
+1. **Define an objective** — Create an OBJ-XXX file in `memory/objectives/` with title, description, and acceptance criteria.
+2. **Create tasks** — Create TASK-XXX files in `memory/tasks/` linked to the objective.
+3. **Work through tasks** — Implement changes, produce artifacts, follow the appropriate workflow from `workflows/`.
+4. **Validate** — Run `python3 scripts/aeos_lint.py` to verify repository integrity.
+5. **Review** — Create REV-XXX files in `memory/reviews/` with findings.
+6. **Audit** — Create AUD-XXX files in `memory/audits/` with compliance checks.
+7. **Handoff** — Create HND-XXX files in `memory/handoffs/` documenting decisions, risks, and next steps.
+8. **Commit** — All artifacts are committed to git. The repository state is the system state.
+9. **Close** — Update objective status to CLOSED when acceptance criteria are met.
+
+### Dashboard
+
+The [dashboard](dashboard/) is a read-only observability layer. It visualizes repository-grounded governance state but does not make governance decisions. See [dashboard/README.md](dashboard/README.md) for details.
+
+The dashboard shows:
+- Governance counts and objective/ADR status
+- State classification view (IMPLEMENTED/EXPERIMENTAL/PROPOSED/STRATEGIC)
+- Baseline information and operational risks
+- All governance documents, protocols, templates, and workflows
+
+Dashboard data is generated by scanning repository markdown — it is never a source of truth.
 
 ## Lifecycle
 
@@ -187,45 +263,3 @@ Use explicit operational state classification where implementation maturity may 
 ## Governance Baseline
 
 A formal governance stabilization checkpoint is documented in [GOVERNANCE_BASELINE_v0.3.md](docs/GOVERNANCE_BASELINE_v0.3.md). It preserves a known-good operational state for rollback, drift comparison, and longitudinal analysis.
-
-## Running AEOS Locally
-
-AEOS is **not** a daemon, SaaS platform, autonomous agent system, or orchestration runtime.
-
-AEOS is operated through:
-- Repository state (markdown governance artifacts)
-- Deterministic validation (`aeos_lint.py`)
-- OpenCode sessions (human-in-the-loop)
-- Human review and approval
-- Dashboard observability (read-only)
-
-### Setup
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/looptr00p/aeos-core.git
-cd aeos-core
-
-# 2. Run lint/validation
-python3 scripts/aeos_lint.py
-
-# 3. Install dashboard dependencies
-cd dashboard
-npm install
-
-# 4. Generate dashboard data from repository markdown
-npm run scan
-
-# 5. Start dashboard locally (opens browser)
-npm run dev
-
-# 6. Open dashboard in browser (auto-opens on npm run dev)
-# Dashboard is read-only — repository markdown remains the source of truth
-
-# 7. Begin an AEOS operational session using OpenCode
-# All governance work happens through markdown artifacts, not the dashboard
-```
-
-### Dashboard
-
-The [dashboard](dashboard/) is a read-only observability layer. It visualizes repository-grounded governance state but does not make governance decisions. See [dashboard/README.md](dashboard/README.md) for details.
