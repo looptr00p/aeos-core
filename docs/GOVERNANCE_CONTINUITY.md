@@ -1,5 +1,7 @@
 # Governance Continuity
 
+**Operational State**: STRATEGIC
+
 ## Why Governance Continuity Matters
 
 Governance is the foundation of AEOS Core. Without continuity, governance becomes inconsistent, ambiguous, and unenforceable. Governance continuity ensures that:

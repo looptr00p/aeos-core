@@ -183,3 +183,7 @@ All AEOS capabilities are classified using explicit operational states:
 - **STRATEGIC** — long-term vision, no active work.
 
 Use explicit operational state classification where implementation maturity may be ambiguous. See `governance/STATE_CLASSIFICATION_POLICY.md`.
+
+## Governance Baseline
+
+A formal governance stabilization checkpoint is documented in [GOVERNANCE_BASELINE_v0.3.md](docs/GOVERNANCE_BASELINE_v0.3.md). It preserves a known-good operational state for rollback, drift comparison, and longitudinal analysis.
