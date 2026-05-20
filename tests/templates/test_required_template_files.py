@@ -16,6 +16,7 @@ REQUIRED_TEMPLATE_FILES = [
     "escalation_template.md",
     "governance_health_report_template.md",
     "traceability_assistance_template.md",
+    "approval_record_template.md",
 ]
 
 
