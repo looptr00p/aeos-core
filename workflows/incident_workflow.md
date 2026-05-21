@@ -1,5 +1,7 @@
 # Incident Workflow
 
+> **State Graph Reference:** This workflow operates within the AEOS state graph defined in [state_graph.md](state_graph.md). All transitions and feedback loops follow the graph edges documented therein.
+
 ## Purpose
 
 Define the process for identifying, responding to, and resolving incidents within AEOS Core.
@@ -31,6 +33,26 @@ Define the process for identifying, responding to, and resolving incidents withi
 11. **Closure**: Mark incident resolved with closure notes.
 12. **Lessons Learned**: Document prevention measures.
 
+## State Graph Mapping
+
+| Workflow Stage | State Graph Node | Responsible Agent | Output Artifact |
+|----------------|------------------|-------------------|-----------------|
+| Incident Identification | `objective_defined` | director | OBJ-XXX / INC-XXX |
+| Investigation | `implementing` | implementer | Root cause analysis |
+| Resolution Proposal | `task_defined` | director | TASK-XXX |
+| Resolution Application | `implementing` | implementer | Código fix |
+| Validation | `testing` | qa | Resultados de tests |
+| Closure | `closed` | director | OBJ-XXX CLOSED |
+
+## Feedback Loops
+
+| Feedback Loop | Trigger | Condition | Action | Re-entry Path |
+|---------------|---------|-----------|--------|---------------|
+| `testing → implementing` | Resolution validation fails | Test results = FAIL | Rollback and re-investigate root cause | implementing → reviewing → testing |
+| `implementing → task_defined` | Resolution scope insufficient | Cannot resolve incident with defined scope | Director expands TASK-XXX with broader scope | task_defined → implementing |
+| `implementing → architecture_reviewed` | Root cause reveals architectural flaw | Current architecture is cause of incident | Architect evaluates and creates/updates ADR | architecture_reviewed → task_defined → implementing |
+| `auditing → objective_defined` | Post-incident audit finds strategic gap | Incident reveals misalignment with OBJ-XXX | Director re-aligns with human operator | objective_defined → ... |
+
 ## Validation Gates
 
 - Incident report is complete.
@@ -52,6 +74,7 @@ Define the process for identifying, responding to, and resolving incidents withi
 - Root cause analysis
 - Resolution documentation
 - Lessons learned document
+- ST-NNN (state transition log for each state change)
 
 ## Exit Criteria
 
@@ -60,6 +83,8 @@ Define the process for identifying, responding to, and resolving incidents withi
 - Resolution is validated.
 - Lessons learned are documented.
 - Incident is marked closed.
+- All state transitions logged in `memory/state-log/ST-NNN.md`.
+- Final state transition recorded: `testing → closed`.
 
 ## Failure Modes
 

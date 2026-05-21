@@ -1,5 +1,7 @@
 # Bugfix Workflow
 
+> **State Graph Reference:** This workflow operates within the AEOS state graph defined in [state_graph.md](state_graph.md). All transitions and feedback loops follow the graph edges documented therein.
+
 ## Purpose
 
 Define the end-to-end process for identifying, fixing, and validating bugs within AEOS Core.
@@ -33,6 +35,27 @@ Define the end-to-end process for identifying, fixing, and validating bugs withi
 11. **Memory Update**: documentation-agent updates memory artifacts.
 12. **Close**: Task is marked complete.
 
+## State Graph Mapping
+
+| Workflow Stage | State Graph Node | Responsible Agent | Output Artifact |
+|----------------|------------------|-------------------|-----------------|
+| Bug Identification | `objective_defined` | director | OBJ-XXX |
+| Task Definition | `task_defined` | director | TASK-XXX |
+| Root Cause Analysis + Implementation | `implementing` | implementer | Código + validación |
+| Review | `reviewing` | reviewer | REV-XXX |
+| Validation | `testing` | qa | Resultados de tests |
+| Handoff | `handoff_complete` | director | HND-XXX |
+| Close | `closed` | director | OBJ-XXX CLOSED |
+
+## Feedback Loops
+
+| Feedback Loop | Trigger | Condition | Action | Re-entry Path |
+|---------------|---------|-----------|--------|---------------|
+| `reviewing → implementing` | Reviewer finds issues in fix | REV-XXX = REQUEST_CHANGES | Implementer addresses specific issues from REV-XXX | implementing → reviewing |
+| `testing → implementing` | Tests fail or regression detected | Test results = FAIL | Implementer fixes bugs, updates tests | implementing → reviewing → testing |
+| `testing → task_defined` | Acceptance criteria unclear for testing | Cannot define clear tests against criteria | Director redefines TASK-XXX with clearer criteria | task_defined → implementing → testing |
+| `implementing → task_defined` | Scope insufficient for fix | Cannot meet acceptance criteria with defined scope | Director expands TASK-XXX with new scope | task_defined → implementing |
+
 ## Validation Gates
 
 - All tests must pass.
@@ -53,6 +76,7 @@ Define the end-to-end process for identifying, fixing, and validating bugs withi
 - REV-XXX (review report)
 - HND-XXX (handoff report)
 - INC-XXX (if bug was a governance incident)
+- ST-NNN (state transition log for each state change)
 
 ## Exit Criteria
 
@@ -61,6 +85,8 @@ Define the end-to-end process for identifying, fixing, and validating bugs withi
 - Review passes.
 - Handoff report is complete.
 - Human approval obtained (for CRITICAL/HIGH).
+- All state transitions logged in `memory/state-log/ST-NNN.md`.
+- Final state transition recorded: `handoff_complete → closed`.
 
 ## Failure Modes
 

@@ -1,5 +1,7 @@
 # Architecture Change Workflow
 
+> **State Graph Reference:** This workflow operates within the AEOS state graph defined in [state_graph.md](state_graph.md). All transitions and feedback loops follow the graph edges documented therein.
+
 ## Purpose
 
 Define the end-to-end process for proposing, reviewing, and implementing architecture changes within AEOS Core.
@@ -34,6 +36,31 @@ Define the end-to-end process for proposing, reviewing, and implementing archite
 12. **Memory Update**: documentation-agent updates architecture documentation.
 13. **Close**: Task is marked complete, ADR status updated.
 
+## State Graph Mapping
+
+| Workflow Stage | State Graph Node | Responsible Agent | Output Artifact |
+|----------------|------------------|-------------------|-----------------|
+| Change Identification | `objective_defined` | director | OBJ-XXX |
+| ADR Proposal + Review | `architecture_reviewed` | architect | ADR-XXX |
+| Task Definition | `task_defined` | director | TASK-XXX |
+| Implementation | `implementing` | implementer | Código + validación |
+| Review | `reviewing` | reviewer | REV-XXX |
+| Validation | `testing` | qa | Resultados de tests |
+| Audit | `auditing` | auditor | AUD-XXX |
+| Handoff | `handoff_complete` | director | HND-XXX |
+| Close | `closed` | director | OBJ-XXX CLOSED |
+
+## Feedback Loops
+
+| Feedback Loop | Trigger | Condition | Action | Re-entry Path |
+|---------------|---------|-----------|--------|---------------|
+| `reviewing → implementing` | Reviewer finds issues in implementation | REV-XXX = REQUEST_CHANGES | Implementer addresses architecture gaps | implementing → reviewing |
+| `testing → implementing` | Tests fail after architecture change | Test results = FAIL | Implementer fixes issues, updates tests | implementing → reviewing → testing |
+| `auditing → reviewing` | Auditor finds gaps in architecture review | AUD-XXX = FAIL with review gaps | Reviewer re-reviews with focus on identified gaps | reviewing → testing |
+| `auditing → objective_defined` | Auditor finds strategic inconsistency | Work doesn't align with OBJ-XXX or contradicts ADRs | Director re-aligns with human operator | objective_defined → ... |
+| `implementing → architecture_reviewed` | Implementer discovers undocumented technical constraint | Current architecture insufficient or incorrect | Architect re-evaluates and creates/updates ADR | architecture_reviewed → task_defined → implementing |
+| `implementing → task_defined` | Scope insufficient for architecture change | Cannot meet acceptance criteria with defined scope | Director expands TASK-XXX | task_defined → implementing |
+
 ## Validation Gates
 
 - ADR must follow ADR_PROTOCOL.
@@ -59,6 +86,7 @@ Define the end-to-end process for proposing, reviewing, and implementing archite
 - AUD-XXX (audit report)
 - HND-XXX (handoff report)
 - Updated architecture documentation
+- ST-NNN (state transition log for each state change)
 
 ## Exit Criteria
 
@@ -67,6 +95,8 @@ Define the end-to-end process for proposing, reviewing, and implementing archite
 - All reviews pass.
 - Architecture documentation is updated.
 - Handoff report is complete.
+- All state transitions logged in `memory/state-log/ST-NNN.md`.
+- Final state transition recorded: `handoff_complete → closed`.
 
 ## Failure Modes
 

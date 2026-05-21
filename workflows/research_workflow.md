@@ -1,5 +1,7 @@
 # Research Workflow
 
+> **State Graph Reference:** This workflow operates within the AEOS state graph defined in [state_graph.md](state_graph.md). All transitions and feedback loops follow the graph edges documented therein.
+
 ## Purpose
 
 Define the process for conducting research, analysis, and documentation within AEOS Core.
@@ -28,6 +30,27 @@ Define the process for conducting research, analysis, and documentation within A
 8. **Handoff**: documentation-agent produces HND-XXX.
 9. **Close**: Task is marked complete.
 
+## State Graph Mapping
+
+| Workflow Stage | State Graph Node | Responsible Agent | Output Artifact |
+|----------------|------------------|-------------------|-----------------|
+| Research Definition | `objective_defined` | director | OBJ-XXX |
+| Task Definition | `task_defined` | director | TASK-XXX |
+| Research Execution | `implementing` | implementer | Investigación |
+| Documentation | `documenting` | documentation | Memoria actualizada |
+| Review | `reviewing` | reviewer | REV-XXX |
+| Handoff | `handoff_complete` | director | HND-XXX |
+| Close | `closed` | director | OBJ-XXX CLOSED |
+
+## Feedback Loops
+
+| Feedback Loop | Trigger | Condition | Action | Re-entry Path |
+|---------------|---------|-----------|--------|---------------|
+| `reviewing → implementing` | Reviewer finds research incomplete | REV-XXX = REQUEST_CHANGES | Researcher gathers additional information | implementing → reviewing |
+| `documenting → implementing` | Documenter finds memory doesn't reflect research | Discrepancy between findings and existing docs | Researcher provides additional context | implementing → documenting |
+| `implementing → task_defined` | Research scope insufficient | Cannot answer research question with defined scope | Director expands TASK-XXX | task_defined → implementing |
+| `implementing → architecture_reviewed` | Research reveals architectural implications | Findings indicate need for architecture change | Architect evaluates and creates ADR | architecture_reviewed → task_defined → implementing |
+
 ## Validation Gates
 
 - Research findings are documented.
@@ -47,6 +70,7 @@ Define the process for conducting research, analysis, and documentation within A
 - REV-XXX (review report)
 - HND-XXX (handoff report)
 - ADR-XXX (if research leads to architecture decision)
+- ST-NNN (state transition log for each state change)
 
 ## Exit Criteria
 
@@ -54,6 +78,8 @@ Define the process for conducting research, analysis, and documentation within A
 - Recommendations are actionable.
 - Review passes.
 - Handoff report is complete.
+- All state transitions logged in `memory/state-log/ST-NNN.md`.
+- Final state transition recorded: `handoff_complete → closed`.
 
 ## Failure Modes
 
