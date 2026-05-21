@@ -327,7 +327,7 @@ def check_severity_labels():
     print("\n[7] Severity Label Validation")
     all_ok = True
 
-    severity_file = os.path.join(ROOT_DIR, "governance", "GOVERNANCE_SEVERITY_MODEL.md")
+    severity_file = os.path.join(GOVERNANCE_DIR, "GOVERNANCE_SEVERITY_MODEL.md")
     if not os.path.isfile(severity_file):
         print(f"  FAIL: GOVERNANCE_SEVERITY_MODEL.md not found")
         return False
