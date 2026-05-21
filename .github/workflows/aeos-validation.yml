@@ -19,8 +19,11 @@ jobs:
       - name: Install dependencies
         run: python -m pip install pytest pyyaml
 
-      - name: Run pytest
-        run: pytest aeos-core/tests
+      - name: Run canonical tests
+        run: pytest tests/ -v
+
+      - name: Run experimental lab tests
+        run: pytest aeos-core/tests -v
 
       - name: Run AEOS lint
-        run: python aeos-core/scripts/aeos_lint.py
+        run: python scripts/aeos_lint.py

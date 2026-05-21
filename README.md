@@ -35,7 +35,6 @@ AEOS operates through:
 | `docs/` | Operational documentation — learnings, design documents, baselines, simulation frameworks |
 | `scripts/` | Deterministic validation — `aeos_lint.py` checks repository integrity |
 | `tests/` | Repository structure validation — pytest tests for governance, protocols, templates, agents, workflows |
-| `gpt_knowledge_base/` | Curated cognition package for external consumption — repository-grounded, not volatile state |
 | `dashboard/` | Read-only observability layer — visualizes repository state, does not make governance decisions |
 
 ## Why AEOS Exists

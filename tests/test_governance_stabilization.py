@@ -60,8 +60,8 @@ def test_esc_002_status_in_review():
     assert status_match.group(1) == "IN_REVIEW", f"ESC-002 status expected IN_REVIEW, got {status_match.group(1)}"
 
 
-def test_esc_003_status_open():
+def test_esc_003_status_resolved():
     content = read_memory_file("incidents", "ESC-003.md")
     status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
     assert status_match, "ESC-003 missing status field"
-    assert status_match.group(1) == "OPEN", f"ESC-003 status expected OPEN, got {status_match.group(1)}"
+    assert status_match.group(1) == "RESOLVED", f"ESC-003 status expected RESOLVED, got {status_match.group(1)}"

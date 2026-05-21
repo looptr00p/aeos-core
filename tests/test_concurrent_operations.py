@@ -44,6 +44,7 @@ def test_esc_003_exists():
 
 
 def test_concurrent_active_objectives_valid():
+    # OBJ-004 and OBJ-005 closed after concurrent simulation. At least 1 ACTIVE objective (OBJ-003) must remain.
     objectives_dir = os.path.join(MEMORY_DIR, "objectives")
     active_count = 0
     for fname in os.listdir(objectives_dir):
@@ -55,20 +56,19 @@ def test_concurrent_active_objectives_valid():
             active_count += 1
             obj_refs = re.findall(r"OBJ-\d{3,}", content)
             assert obj_refs, f"ACTIVE objective {fname} has no traceability ID"
-    assert active_count >= 2, "Expected at least 2 ACTIVE objectives for concurrency validation"
+    assert active_count >= 1, "Expected at least 1 ACTIVE objective"
 
 
 def test_open_escalation_accumulation_valid():
+    # Concurrent simulation closed. OBJ-004 and OBJ-005 are CLOSED; ESC-003 is RESOLVED.
+    # All OPEN escalations (if any) must reference an objective or task.
     incidents_dir = os.path.join(MEMORY_DIR, "incidents")
-    open_count = 0
     for fname in os.listdir(incidents_dir):
         if not fname.endswith(".md") or not fname.startswith("ESC-"):
             continue
         content = read_memory_file("incidents", fname)
         status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
         if status_match and status_match.group(1) == "OPEN":
-            open_count += 1
             obj_refs = re.findall(r"OBJ-\d{3,}", content)
             task_refs = re.findall(r"TASK-\d{3,}", content)
             assert obj_refs or task_refs, f"OPEN escalation {fname} has no objective or task references"
-    assert open_count >= 1, "Expected at least 1 OPEN escalation after partial recovery (ESC-002 moved to IN_REVIEW)"

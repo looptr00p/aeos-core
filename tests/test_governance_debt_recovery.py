@@ -86,10 +86,10 @@ def test_esc_002_in_review():
     assert status_match and status_match.group(1) == "IN_REVIEW", f"ESC-002 expected IN_REVIEW, got {status_match.group(1) if status_match else 'NOT FOUND'}"
 
 
-def test_esc_003_open():
+def test_esc_003_resolved():
     content = read_memory_file("incidents", "ESC-003.md")
     status_match = re.search(r"## Status\s*\n\s*(\w+)", content)
-    assert status_match and status_match.group(1) == "OPEN", f"ESC-003 expected OPEN, got {status_match.group(1) if status_match else 'NOT FOUND'}"
+    assert status_match and status_match.group(1) == "RESOLVED", f"ESC-003 expected RESOLVED, got {status_match.group(1) if status_match else 'NOT FOUND'}"
 
 
 def test_hnd_007_exists():
