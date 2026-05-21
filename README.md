@@ -1,46 +1,106 @@
-# AEOS Core v0.3
+# AEOS Core v0.4 — AI Engineering Operating System
 
-AI Engineering Operating System. Governance-first, repo-driven, markdown-first, human-governed, deterministic, auditable, reproducible.
+Governance-first, repo-driven, markdown-first, human-governed, deterministic, auditable, reproducible.
+
+**AEOS is not "run." It is operated.** Each operational session follows the same pattern: define an objective, create tasks, produce artifacts, validate with lint, review, audit, and close with a handoff. The repository state is the system state.
+
+---
 
 ## What AEOS Actually Is
 
-AEOS is not "run" as an autonomous system. It has no daemon, no orchestration engine, no runtime agents, and no self-governing logic.
+AEOS is **organizational cognition infrastructure** for AI-assisted software development. It preserves strategic and operational continuity while multiple intelligences (human and artificial) participate in a project.
 
-AEOS is operated through **governed sessions over real projects**. Each session produces markdown artifacts that are committed to git, validated by deterministic scripts, and reviewed by humans.
+The problem AEOS solves:
+
+```
+how do I keep a project coherent after:
+- 500 conversations
+- 20 features
+- multiple models
+- direction changes
+- contextual debt
+- replaced agents
+- mutated prompts
+- partial memory
+```
 
 AEOS operates through:
 - **Repository governance** — rules, protocols, and workflows defined in markdown files.
-- **Operational workflows** — structured lifecycles from objective creation through closure.
-- **Markdown artifacts** — objectives, tasks, reviews, audits, handoffs, incidents, escalations, ADRs.
+- **State graph workflows** — bidirectional feedback loops, not linear pipelines.
+- **Markdown artifacts** — objectives, tasks, reviews, audits, handoffs, incidents, escalations, ADRs, state transitions.
 - **Longitudinal operational sessions** — discrete work sessions governed by explicit objectives.
-- **OpenCode/LLM-assisted cognition** — AI-assisted engineering within strict governance boundaries.
+- **LLM-assisted cognition** — AI-assisted engineering within strict governance boundaries.
 - **Human review** — no artifact is approved without human judgment.
 
-**AEOS is not "run." It is operated.** Each operational session follows the same pattern: define an objective, create tasks, produce artifacts, validate with lint, review, audit, and close with a handoff. The repository state is the system state.
+---
+
+## Architecture: 3 Layers
+
+```
+┌─────────────────────────────────────────────────────┐
+│  Layer 1: Cognitive Governance Layer  ← THE CORE    │
+│  Memory, ADRs, handoffs, state, protocols            │
+├─────────────────────────────────────────────────────┤
+│  Layer 2: Agent Orchestration Layer                  │
+│  Director, architect, implementer, reviewer, etc.    │
+├─────────────────────────────────────────────────────┤
+│  Layer 3: Execution Layer                            │
+│  OpenCode, Claude Code, Cursor, GPTs, Gemini...       │
+└─────────────────────────────────────────────────────┘
+```
+
+**Key principle:** Layers 2 and 3 are replaceable. Layer 1 is permanent.
+
+---
 
 ## Repository Structure
 
 | Directory | Purpose |
 |-----------|---------|
 | `governance/` | Rules, constraints, permission model, safety rules, severity model, state classification policy |
-| `protocols/` | How work is done — task, review, context, memory, handoff, incident, and ADR protocols |
+| `protocols/` | How work is done — task, review, context, memory, handoff, incident, ADR, state transition protocols |
 | `templates/` | Reusable artifact templates — objectives, tasks, reviews, audits, handoffs, incidents, escalations |
-| `workflows/` | End-to-end process definitions — feature, bugfix, architecture change, audit, incident, research |
+| `workflows/` | End-to-end process definitions as **state graphs** — feature, bugfix, architecture change, audit, incident, research |
 | `agents/` | Agent definitions and registry — director, architect, implementer, reviewer, auditor, QA, documentation |
-| `memory/` | Explicit institutional memory — objectives, tasks, reviews, audits, handoffs, incidents, decisions, research |
-| `memory/objectives/` | OBJ-XXX files — operational goals with status (ACTIVE/DRAFT/CLOSED) |
-| `memory/decisions/` | ADR-XXX files — architecture decision records |
-| `memory/incidents/` | INC-XXX and ESC-XXX files — incidents and escalations |
-| `memory/research/` | OPR-XXX and GHR-XXX files — operational reports and governance health reports |
+| `memory/` | Explicit institutional memory — objectives, tasks, reviews, audits, handoffs, incidents, decisions, research, state-log |
+| `memory/state-log/` | ST-XXX files — state transition records |
 | `docs/` | Operational documentation — learnings, design documents, baselines, simulation frameworks |
 | `scripts/` | Deterministic validation — `aeos_lint.py` checks repository integrity |
 | `tests/` | Repository structure validation — pytest tests for governance, protocols, templates, agents, workflows |
-| `gpt_knowledge_base/` | Curated cognition package for external consumption — repository-grounded, not volatile state |
-| `dashboard/` | Read-only observability layer — visualizes repository state, does not make governance decisions |
+| `.opencode/` | OpenCode integration — agent definitions, config, governance skill |
+| `dashboard/` | Read-only observability layer — visualizes repository state |
+| `template/` | **Reusable AEOS template** — apply to any new project |
+
+---
+
+## Reusable Template
+
+AEOS v0.4 includes a **reusable template** that can be applied to any project:
+
+```bash
+cp -r template/.aegos ./
+cp -r template/.opencode ./
+cp -r template/memory ./
+cp template/scripts/aeos_lint.py ./scripts/
+cp template/AGENTS.md ./
+cp template/project-charter.md ./
+```
+
+Then fill in `project-charter.md` and validate:
+
+```bash
+python3 scripts/aeos_lint.py
+```
+
+See `template/README.md` for full instructions and governance profiles (Full, Standard, Lite).
+
+---
 
 ## Why AEOS Exists
 
 AI-assisted engineering introduces risks that traditional development workflows do not address: autonomous behavior without accountability, hidden state, uncontrolled scope expansion, missing audit trails, and non-reproducible outputs. AEOS provides a framework that keeps AI-assisted engineering human-governed and auditable.
+
+---
 
 ## Governance-First Philosophy
 
@@ -54,69 +114,56 @@ Governance precedes implementation. Before any work begins:
 
 Governance cannot be bypassed. Critical changes require human approval.
 
-## Workflow-First Philosophy
+---
 
-All work follows defined workflows with entry criteria, validation gates, review requirements, and exit criteria. See `workflows/` for available workflows.
+## State Graph Workflows
+
+Workflows are **NOT linear pipelines**. They are state graphs with bidirectional feedback loops:
+
+```
+director → architect → implementer → reviewer → qa → auditor → documentation → director
+                ↑          ↑            ↑         ↑       ↑
+                │          └────────────┘         │       │
+                └─────────────────────────────────┘       │
+                        feedback loops                     │
+                                                          │
+                        escalations ←────────────────────┘
+```
+
+See `workflows/state_graph.md` for the complete graph and `protocols/STATE_TRANSITION_PROTOCOL.md` for transition recording rules.
+
+---
 
 ## Human-in-the-Loop Operation
 
 No agent may self-approve. Critical changes require human approval. Escalations route to human review. Humans retain ultimate decision authority.
 
+---
+
 ## Explicit Memory Model
 
 All institutional memory is stored as markdown files in `memory/`, is human-readable, git-versioned, auditable, and reproducible. No hidden memory, embeddings, or autonomous memory mutation is allowed.
+
+**The memory of the project lives in the project.**
+
+---
 
 ## Reproducibility Principles
 
 All outputs must be reproducible from git history, traceable to originating objectives and tasks, documented with explicit artifacts, and validated through defined gates. No hidden state or implicit behavior is allowed.
 
+---
+
 ## Auditability Principles
 
 All operations must be traceable to specific agents, tasks, and objectives; documented with review and audit artifacts; subject to governance compliance checks; and preserved in git history without deletion.
 
-## Repository Overview
-
-See [Repository Structure](#repository-structure) above for directory purposes.
-
-Key artifact counts at baseline v0.3:
-- 8 governance files, 7 protocols, 12 templates, 6 workflows, 7 agents
-- 8 objectives (2 CLOSED, 3 ACTIVE, 3 DRAFT), 3 ADRs (all PROPOSED)
-- 11 lint checks (all passing), 14 test files defined
-
-## v0.3 Additions
-
-AEOS Core v0.3 introduces operational execution readiness:
-
-- **Governance Severity Model** (`governance/GOVERNANCE_SEVERITY_MODEL.md`) — [IMPLEMENTED] classifies governance violations as LOW, MEDIUM, HIGH, or CRITICAL with defined response requirements.
-- **Escalation Classification** (`templates/escalation_template.md`) — [IMPLEMENTED] standardized escalation template with severity, impact, and resolution tracking.
-- **Operational Review Cadence** (`docs/REVIEW_CADENCE.md`) — [IMPLEMENTED] defines daily, weekly, monthly, and quarterly review cycles.
-- **Governance Health Reporting** (`templates/governance_health_report_template.md`) — [IMPLEMENTED] reusable template for governance health assessment.
-- **Operational Lifecycle Examples** (`docs/OPERATIONAL_EXAMPLES.md`) — [IMPLEMENTED] complete realistic examples of all AEOS artifact lifecycles with traceability.
-- **State Classification Policy** (`governance/STATE_CLASSIFICATION_POLICY.md`) — [IMPLEMENTED] defines operational states (IMPLEMENTED, EXPERIMENTAL, PROPOSED, STRATEGIC) to prevent capability inflation and state ambiguity.
-
-AEOS Core v0.3 still does NOT include:
-
-- Orchestration runtime.
-- Autonomous workflows.
-- Runtime agents.
-- Hidden memory.
-- Distributed execution.
-- Workflow execution engines.
+---
 
 ## AEOS Session Boot Sequence
 
-AEOS is operated through governed sessions, not through an autonomous runtime.
-
-Each operational session should begin with repository truth validation before any observability surface is used.
-
-```text
-sync → validate → observe → operate
 ```
-
-Guiding principle:
-
-```text
-truth before visualization
+sync → validate → observe → operate
 ```
 
 ### 1. Sync repository
@@ -133,44 +180,9 @@ pytest tests/
 python3 scripts/aeos_lint.py
 ```
 
-This validates:
+### 3. Operate
 
-- repository structure
-- governance expectations
-- lifecycle assumptions
-- traceability
-- operational consistency
-
-**Dashboard commands should run only after repository validation succeeds.**
-
-### 3. Observe (only after validation)
-
-```bash
-cd dashboard
-npm install
-npm run scan
-npm run dev
-```
-
-The dashboard is a read-only governance observability surface.
-
-It improves navigation and operational cognition, but it is not the system itself.
-
-- Repository state is the source of truth.
-- Validation happens before observability.
-- Dashboard is read-only.
-- Dashboard must not override repository artifacts.
-- No dashboard-derived claim may override repository evidence.
-
-If drift is detected, it must become an explicit:
-
-- task
-- review
-- audit artifact
-
-### 4. Operate
-
-Begin the OpenCode operational session only after repository truth has been validated and, if needed, observed.
+Begin the operational session. Define an objective, follow the state graph workflow.
 
 ### How an Operational Session Works
 
@@ -181,28 +193,23 @@ Begin the OpenCode operational session only after repository truth has been vali
 5. **Review** — Create REV-XXX files in `memory/reviews/` with findings.
 6. **Audit** — Create AUD-XXX files in `memory/audits/` with compliance checks.
 7. **Handoff** — Create HND-XXX files in `memory/handoffs/` documenting decisions, risks, and next steps.
-8. **Commit** — All artifacts are committed to git. The repository state is the system state.
-9. **Close** — Update objective status to CLOSED when acceptance criteria are met.
+8. **Log state transitions** — Create ST-XXX files in `memory/state-log/` for each transition.
+9. **Commit** — All artifacts are committed to git. The repository state is the system state.
+10. **Close** — Update objective status to CLOSED when acceptance criteria are met.
+
+---
 
 ## Lifecycle
 
-The official AEOS Core lifecycle:
+The official AEOS Core lifecycle (as a state graph):
 
 ```
-Objective
-  -> ADR
-  -> Task Definition
-  -> Agent Assignment
-  -> Implementation
-  -> Review
-  -> Audit
-  -> CI Validation
-  -> Handoff
-  -> Memory Update
-  -> Close
+Objective → ADR → Task Definition → Agent Assignment → Implementation → Review → Audit → CI Validation → Handoff → Memory Update → Close
 ```
 
-Each stage produces explicit artifacts. No stage may be skipped.
+Each stage produces explicit artifacts. No stage may be skipped. Feedback loops allow returning to previous stages when issues are found.
+
+---
 
 ## Governance Boundaries
 
@@ -214,6 +221,8 @@ Each stage produces explicit artifacts. No stage may be skipped.
 - Audit history must never be deleted.
 - No unrestricted permissions are allowed.
 
+---
+
 ## Operational Constraints
 
 - Agents operate within assigned permission levels.
@@ -222,9 +231,11 @@ Each stage produces explicit artifacts. No stage may be skipped.
 - All decisions must reference explicit artifacts.
 - All workflows must terminate explicitly.
 
+---
+
 ## Explicit Non-Goals
 
-AEOS Core v0.3 is NOT:
+AEOS Core v0.4 is NOT:
 
 - An autonomous execution system.
 - A hidden memory system.
@@ -238,33 +249,41 @@ AEOS Core v0.3 is NOT:
 - A distributed runtime.
 - A runtime agent system.
 
-AEOS Core v0.3 does NOT execute autonomous workflows.
+---
 
 ## Documentation
 
-- [AEOS Constitutional Core](docs/AEOS_CONSTITUTIONAL_CORE.md) — shared operational doctrine across AEOS GPTs
+- [AEOS Constitutional Core](docs/AEOS_CONSTITUTIONAL_CORE.md) — shared operational doctrine
 - [AEOS Overview](docs/AEOS_OVERVIEW.md)
 - [Operating Model](docs/OPERATING_MODEL.md)
-- [MVP Scope](docs/MVP_SCOPE.md)
 - [Governance Continuity](docs/GOVERNANCE_CONTINUITY.md)
 - [Review Cadence](docs/REVIEW_CADENCE.md)
 - [Operational Examples](docs/OPERATIONAL_EXAMPLES.md)
+- [Template README](template/README.md) — how to apply AEOS to any project
+
+---
 
 ## Current Phase
 
-**Phase 0: Governance/Bootstrap**
+**Phase 0: Governance/Bootstrap** — governance established, validated, and template-ized. Ready for Phase 1 (Controlled Internal Adoption).
 
 See [PHASE_POLICY.md](governance/PHASE_POLICY.md) for phase definitions.
 
-## Repository Role
+---
 
-This repository is the **AEOS Experimental Governance Lab**.
+## v0.4 Additions
 
-- `aeos-core-opencode` is the canonical operational base.
-- This repository is used for governance, enforcement, lifecycle, traceability, and validation experiments.
-- Experiments are not canonical by default.
-- All porting to `aeos-core-opencode` requires explicit review, validation evidence, and human approval.
-- No autonomous runtime exists in this repository.
+AEOS Core v0.4 introduces:
+
+- **OpenCode Integration** — `.opencode/` with 7 agents, mixed models, and governance skill
+- **State Graph Orchestration** — workflows as graphs with feedback loops, not linear pipelines
+- **State Transition Protocol** — `protocols/STATE_TRANSITION_PROTOCOL.md` for recording transitions
+- **Reusable Template** — `template/` directory with complete AEOS structure for any project
+- **Configurable Lint** — `aeos_lint.py` supports environment variables for custom paths
+- **Project Charter** — `project-charter.md` template for project-specific configuration
+- **3 Governance Profiles** — Full, Standard, Lite based on project complexity
+
+---
 
 ## Operational State Classification
 
@@ -276,6 +295,8 @@ All AEOS capabilities are classified using explicit operational states:
 - **STRATEGIC** — long-term vision, no active work.
 
 Use explicit operational state classification where implementation maturity may be ambiguous. See `governance/STATE_CLASSIFICATION_POLICY.md`.
+
+---
 
 ## Governance Baseline
 

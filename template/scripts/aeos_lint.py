@@ -159,22 +159,43 @@ def collect_memory_artifacts(directory):
 def check_required_files():
     print("\n[1] Required Files")
     all_ok = True
+    found_any = False
 
     for fname in GOVERNANCE_FILES:
-        if not check_file(os.path.join(GOVERNANCE_DIR, fname), f"governance/{fname}"):
-            all_ok = False
+        fpath = os.path.join(GOVERNANCE_DIR, fname)
+        if os.path.isfile(fpath):
+            found_any = True
+            print(f"  OK:   governance/{fname}")
+        else:
+            print(f"  SKIP: governance/{fname} (not in profile)")
 
     for fname in PROTOCOL_FILES:
-        if not check_file(os.path.join(PROTOCOLS_DIR, fname), f"protocols/{fname}"):
-            all_ok = False
+        fpath = os.path.join(PROTOCOLS_DIR, fname)
+        if os.path.isfile(fpath):
+            found_any = True
+            print(f"  OK:   protocols/{fname}")
+        else:
+            print(f"  SKIP: protocols/{fname} (not in profile)")
 
     for fname in TEMPLATE_FILES:
-        if not check_file(os.path.join(TEMPLATES_DIR, fname), f"templates/{fname}"):
-            all_ok = False
+        fpath = os.path.join(TEMPLATES_DIR, fname)
+        if os.path.isfile(fpath):
+            found_any = True
+            print(f"  OK:   templates/{fname}")
+        else:
+            print(f"  SKIP: templates/{fname} (not in profile)")
 
     for fname in WORKFLOW_FILES:
-        if not check_file(os.path.join(WORKFLOWS_DIR, fname), f"workflows/{fname}"):
-            all_ok = False
+        fpath = os.path.join(WORKFLOWS_DIR, fname)
+        if os.path.isfile(fpath):
+            found_any = True
+            print(f"  OK:   workflows/{fname}")
+        else:
+            print(f"  SKIP: workflows/{fname} (not in profile)")
+
+    if not found_any:
+        print("  FAIL: No governance files found")
+        return False
 
     return all_ok
 
@@ -329,8 +350,8 @@ def check_severity_labels():
 
     severity_file = os.path.join(GOVERNANCE_DIR, "GOVERNANCE_SEVERITY_MODEL.md")
     if not os.path.isfile(severity_file):
-        print(f"  FAIL: GOVERNANCE_SEVERITY_MODEL.md not found")
-        return False
+        print(f"  SKIP: GOVERNANCE_SEVERITY_MODEL.md not found (may not be in profile)")
+        return all_ok
 
     with open(severity_file, "r") as f:
         content = f.read()
