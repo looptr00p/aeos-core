@@ -36,3 +36,8 @@ agents:
     name: Documentation Agent
     role: documentation-updates
     status: active
+
+  - agent_id: prompt-engineer-agent
+    name: Prompt Engineer Agent
+    role: prompt-engineering
+    status: active
