@@ -1,0 +1,52 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "director",
+  "instructions": ["AGENTS.md", ".aegos/governance/AGENTS.md"],
+  "agent": {
+    "director": {
+      "mode": "primary",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "description": "Interfaz humana única. Estrategia, delegación autónoma, coordinación de agentes, continuidad operacional."
+    },
+    "architect": {
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "description": "Propuestas arquitectónicas, ADRs, análisis de impacto técnico."
+    },
+    "implementer": {
+      "mode": "subagent",
+      "model": "anthropic/claude-3-5-haiku-20241022",
+      "description": "Implementación de código dentro de scope definido por TASK-XXX."
+    },
+    "reviewer": {
+      "mode": "subagent",
+      "model": "anthropic/claude-3-5-haiku-20241022",
+      "description": "Validación de código contra specs, gobernanza y estándares de calidad."
+    },
+    "auditor": {
+      "mode": "subagent",
+      "model": "anthropic/claude-3-5-haiku-20241022",
+      "description": "Auditoría de cumplimiento de gobernanza, trazabilidad y protocolos."
+    },
+    "qa": {
+      "mode": "subagent",
+      "model": "anthropic/claude-3-5-haiku-20241022",
+      "description": "Generación y ejecución de tests, validación funcional."
+    },
+    "documentation": {
+      "mode": "subagent",
+      "model": "anthropic/claude-3-5-haiku-20241022",
+      "description": "Actualización de memoria, docs y artifacts del proyecto."
+    }
+  },
+  "permission": {
+    "edit": "ask",
+    "bash": {
+      "git *": "allow",
+      "python3 scripts/aeos_lint.py": "allow",
+      "pytest tests/*": "allow",
+      "pytest": "allow",
+      "*": "ask"
+    }
+  }
+}
